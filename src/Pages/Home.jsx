@@ -3,7 +3,7 @@
 import Navbar from "../Components/Comman/Navbar";
 import Footer from "../Components/Comman/Footer";
 
-import Hero from "../Components/Home/Hero";
+import Hero from "../Components/Home/Hero/Hero";
 import BrandStory from "../Components/Home/BrandStory";
 import FeaturedCoffee from "../Components/Home/FeaturedCoffee";
 import CoffeeJourney from "../Components/Home/CoffeeJourney";
