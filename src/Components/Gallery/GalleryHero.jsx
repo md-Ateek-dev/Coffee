@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaImages } from "react-icons/fa";
 import useReveal from "../../Hooks/UseReveal";
 
-import heroVideo from "../../assets/videos/gallery_Video2.mp4";
+import heroVideo from "../../assets/videos/Gallery_Video2.mp4";
 // import posterImg from "../../assets/images/gallery/gallery-hero.webp";
 
 const GalleryHero = () => {
