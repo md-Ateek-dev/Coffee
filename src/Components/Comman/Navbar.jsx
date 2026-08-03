@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { FiMenu, FiSearch, FiShoppingBag } from "react-icons/fi";
+import { FiMenu, FiSearch, FiShoppingBag, FiHeart } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import MagneticButton from "./MagneticButton";
+import { useShop } from "../../Context/ShopContext";
 
 const links = [
 	{ name: "Home", path: "/" },
@@ -18,6 +19,7 @@ const links = [
 
 const Navbar = () => {
 	const [open, setOpen] = useState(false);
+	const { cartCount, wishlist, setCartOpen } = useShop();
 
 	return (
 		<header className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
@@ -52,9 +54,31 @@ const Navbar = () => {
 						<FiSearch size={20} />
 					</Link>
 
-					<Link to="/shop" className="text-white hover:text-amber-400 transition" title="Cart">
-						<FiShoppingBag size={20} />
+					<Link
+						to="/shop"
+						className="relative text-white hover:text-amber-400 transition"
+						title="Wishlist"
+					>
+						<FiHeart size={20} />
+						{wishlist.length > 0 && (
+							<span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+								{wishlist.length}
+							</span>
+						)}
 					</Link>
+
+					<button
+						onClick={() => setCartOpen(true)}
+						className="relative text-white hover:text-amber-400 transition"
+						title="Cart"
+					>
+						<FiShoppingBag size={20} />
+						{cartCount > 0 && (
+							<span className="absolute -top-2 -right-2 w-5 h-5 bg-amber-500 text-black text-[10px] font-bold rounded-full flex items-center justify-center">
+								{cartCount}
+							</span>
+						)}
+					</button>
 
 					<Link to="/contact">
 						<MagneticButton className="bg-amber-500 px-6 py-3 rounded-full text-black font-bold hover:bg-amber-400 transition shadow-lg shadow-amber-500/20 text-sm">
@@ -65,9 +89,17 @@ const Navbar = () => {
 
 				{/* Mobile Menu Toggle Button */}
 				<div className="flex items-center gap-4 lg:hidden">
-					<Link to="/shop" className="text-white hover:text-amber-400 transition">
+					<button
+						onClick={() => setCartOpen(true)}
+						className="relative text-white hover:text-amber-400 transition"
+					>
 						<FiShoppingBag size={22} />
-					</Link>
+						{cartCount > 0 && (
+							<span className="absolute -top-2 -right-2 w-5 h-5 bg-amber-500 text-black text-[10px] font-bold rounded-full flex items-center justify-center">
+								{cartCount}
+							</span>
+						)}
+					</button>
 
 					<button
 						onClick={() => setOpen(!open)}

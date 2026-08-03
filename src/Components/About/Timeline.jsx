@@ -4,147 +4,177 @@ import {
   FaUsers,
   FaGlobe,
   FaCoffee,
+  FaChevronLeft,
+  FaChevronRight,
+  FaHistory,
 } from "react-icons/fa";
+import { useHorizontalScroll } from "../../Hooks/useHorizontalScroll";
 
-import useReveal from "../../Hooks/UseReveal";
-import useStaggerReveal from "../../Hooks/useStaggerReveal";
-
-const timeline = [
+const timelineEvents = [
   {
     id: 1,
     year: "2018",
     icon: <FaFlag />,
     title: "Aura Coffee Founded",
+    subtitle: "The Origin",
     description:
-      "Started with a vision to serve premium handcrafted coffee.",
+      "Started with a passion to serve authentic, handcrafted coffee made from ethically sourced beans.",
+    image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: 2,
     year: "2019",
     icon: <FaStore />,
-    title: "First Coffee Shop",
+    title: "First Flagship Café",
+    subtitle: "Physical Presence",
     description:
-      "Opened our first flagship café with locally roasted beans.",
+      "Opened our first sanctuary for coffee lovers, introducing signature pour-over roasts and pastries.",
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: 3,
     year: "2021",
     icon: <FaUsers />,
-    title: "10,000+ Customers",
+    title: "10,000+ Coffee Lovers",
+    subtitle: "Community Growth",
     description:
-      "Built a strong community of loyal coffee lovers.",
+      "Built a thriving community of regular coffee aficionados and launched roasting workshops.",
+    image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: 4,
     year: "2023",
     icon: <FaGlobe />,
-    title: "Global Coffee Farms",
+    title: "Direct Farm Partnerships",
+    subtitle: "Global Sourcing",
     description:
-      "Partnered with ethical coffee farms across multiple countries.",
+      "Partnered directly with sustainable, fair-trade coffee farms across Ethiopia and Guatemala.",
+    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: 5,
     year: "2026",
     icon: <FaCoffee />,
-    title: "50,000+ Cups Served",
+    title: "50,000+ Cups Crafted",
+    subtitle: "A New Chapter",
     description:
-      "Reached an exciting milestone while maintaining premium quality.",
+      "Reached an inspiring milestone while continuing our commitment to sustainable roasting.",
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
 const Timeline = () => {
-  useReveal(".timeline");
-  useStaggerReveal(".timeline", ".timeline-card");
+  const {
+    sectionRef,
+    trackRef,
+    currentIndex,
+    scrollNext,
+    scrollPrev,
+  } = useHorizontalScroll({ extraHeight: 1.1 });
 
   return (
-    <section className="timeline py-24 bg-[#0F0E0D]">
-
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Heading */}
-
-        <div className="text-center max-w-3xl mx-auto mb-20">
-
-          <span className="uppercase tracking-[5px] text-amber-500">
-            Our Journey
-          </span>
-
-          <h2 className="text-5xl font-bold mt-4">
-            Milestones That Define Us
-          </h2>
-
-          <p className="mt-6 text-zinc-400 leading-8">
-            Every milestone reflects our passion for crafting memorable
-            coffee experiences and building lasting relationships.
-          </p>
-
-        </div>
-
-        {/* Timeline */}
-
-        <div className="relative">
-
-          {/* Center Line */}
-
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-zinc-700 -translate-x-1/2" />
-
-          <div className="space-y-16">
-
-            {timeline.map((item, index) => (
-
-              <div
-                key={item.id}
-                className={`timeline-card relative flex flex-col lg:flex-row items-center gap-10 ${
-                  index % 2 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-
-                {/* Card */}
-
-                <div className="lg:w-1/2">
-
-                  <div className="bg-[#181715] rounded-3xl border border-zinc-800 hover:border-amber-500 transition-all duration-300 p-8">
-
-                    <span className="text-amber-500 font-semibold">
-                      {item.year}
-                    </span>
-
-                    <div className="w-16 h-16 rounded-full bg-amber-500 text-black flex items-center justify-center text-2xl mt-5">
-
-                      {item.icon}
-
-                    </div>
-
-                    <h3 className="text-3xl font-bold mt-6">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-4 text-zinc-400 leading-7">
-                      {item.description}
-                    </p>
-
-                  </div>
-
-                </div>
-
-                {/* Timeline Dot */}
-
-                <div className="relative z-10 w-7 h-7 rounded-full bg-amber-500 border-4 border-[#0F0E0D]" />
-
-                {/* Empty Side */}
-
-                <div className="hidden lg:block lg:w-1/2" />
-
-              </div>
-
-            ))}
-
+    <section
+      ref={sectionRef}
+      className="timeline-horizontal relative bg-[#0B0A09] overflow-hidden border-t border-b border-zinc-800/60"
+    >
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-between py-6 relative">
+        {/* Header */}
+        <div className="max-w-7xl w-full mx-auto px-6 flex items-center justify-between z-10 pt-2">
+          <div>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-1.5">
+              <FaHistory /> Our Journey
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+              Milestones That Define Us
+            </h2>
           </div>
 
+          {/* Controls & Counter */}
+          <div className="flex items-center gap-3">
+            <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+              <span className="text-amber-400 font-bold">
+                0{currentIndex + 1}
+              </span>{" "}
+              / 0{timelineEvents.length}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={scrollPrev}
+                disabled={currentIndex === 0}
+                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                aria-label="Previous Milestone"
+              >
+                <FaChevronLeft size={14} />
+              </button>
+              <button
+                onClick={scrollNext}
+                disabled={currentIndex >= timelineEvents.length - 1}
+                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                aria-label="Next Milestone"
+              >
+                <FaChevronRight size={14} />
+              </button>
+            </div>
+          </div>
         </div>
 
-      </div>
+        {/* Horizontal Track */}
+        <div className="w-full overflow-hidden my-auto py-2">
+          <div
+            ref={trackRef}
+            className="flex gap-6 md:gap-8 px-6 md:px-16 items-center w-max transition-transform duration-100 ease-out"
+          >
+            {timelineEvents.map((item, index) => (
+              <div
+                key={item.id}
+                className="w-[280px] sm:w-[330px] md:w-[360px] bg-[#161513] rounded-2xl p-6 border border-zinc-800/90 hover:border-amber-500/80 transition-all duration-300 shadow-xl group shrink-0 flex flex-col justify-between"
+              >
+                {/* Year Header */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-amber-500 text-black flex items-center justify-center text-lg font-bold shadow-md">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <span className="text-amber-400 font-extrabold text-xl tracking-tight">
+                        {item.year}
+                      </span>
+                      <span className="block text-[10px] text-zinc-500 font-medium">
+                        {item.subtitle}
+                      </span>
+                    </div>
+                  </div>
 
+                  <span className="text-[10px] font-mono text-zinc-500 border border-zinc-800 px-2.5 py-0.5 rounded-full">
+                    0{index + 1}
+                  </span>
+                </div>
+
+                {/* Milestone Image */}
+                <div className="my-4 rounded-xl overflow-hidden aspect-[16/10] relative bg-[#0f0e0d]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#161513] via-transparent to-transparent" />
+                </div>
+
+                {/* Content */}
+                <div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-zinc-400 text-xs leading-relaxed line-clamp-2">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

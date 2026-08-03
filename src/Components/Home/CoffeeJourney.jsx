@@ -1,101 +1,150 @@
-import {
-  GiCoffeeBeans,
-} from "react-icons/gi";
+import { useHorizontalScroll } from "../../Hooks/useHorizontalScroll";
+import { GiCoffeeBeans } from "react-icons/gi";
+import { FaFire, FaMugHot, FaSmile, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import {
-  FaFire,
-  FaMugHot,
-  FaSmile,
-} from "react-icons/fa";
-import useReveal from "../../Hooks/UseReveal";
-const process = [
+const processSteps = [
   {
     id: "01",
-    title: "Coffee Farm",
+    title: "Sourcing & Harvest",
     icon: <GiCoffeeBeans />,
+    subtitle: "Organic Single-Origin",
     description:
-      "Fresh coffee beans are carefully selected from sustainable farms.",
+      "Hand-picked arabica coffee cherries selected from high-altitude sustainable farms in Ethiopia.",
+    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "02",
-    title: "Roasting",
+    title: "Precision Roasting",
     icon: <FaFire />,
+    subtitle: "Micro-Batch Roast",
     description:
-      "Each batch is roasted with precision for a rich aroma and flavor.",
+      "Roasting each batch to perfection, unlocking complex notes of rich chocolate and berries.",
+    image: "https://images.unsplash.com/photo-1518832553480-cd0e625ed3e6?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "03",
-    title: "Brewing",
+    title: "Masterful Brewing",
     icon: <FaMugHot />,
+    subtitle: "Artisan Touch",
     description:
-      "Our expert baristas craft every cup with passion and care.",
+      "Engineered extraction using calibrated water temperature for balanced flavor profiles.",
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "04",
-    title: "Enjoy",
+    title: "The Experience",
     icon: <FaSmile />,
+    subtitle: "Savor Every Sip",
     description:
-      "Take a moment to relax and enjoy the perfect coffee experience.",
+      "Served at ideal temperature in handcrafted ceramics for an unforgettable coffee moment.",
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
 const CoffeeJourney = () => {
-  useReveal(".journey");
+  const {
+    sectionRef,
+    trackRef,
+    currentIndex,
+    scrollNext,
+    scrollPrev,
+  } = useHorizontalScroll({ extraHeight: 1.1 });
+
   return (
-    <section className="journey py-28 bg-[#181715]">
+    <section
+      ref={sectionRef}
+      className="journey-horizontal relative bg-[#0D0C0B] overflow-hidden border-t border-b border-zinc-800/60"
+    >
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-between py-6 relative">
+        {/* Header */}
+        <div className="max-w-7xl w-full mx-auto px-6 flex items-center justify-between z-10 pt-2">
+          <div>
+            <span className="uppercase tracking-[4px] text-amber-500 font-semibold text-xs">
+              Our Craft Process
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-1">
+              From Farm To Your Cup
+            </h2>
+          </div>
 
-      <div className="max-w-7xl mx-auto px-6">
-
-        <div className="text-center mb-16">
-
-          <p className="uppercase tracking-[5px] text-amber-500">
-            Our Process
-          </p>
-
-          <h2 className="text-5xl md:text-6xl font-bold mt-4">
-            From Farm To Your Cup
-          </h2>
-
-          <p className="text-zinc-400 mt-6 max-w-2xl mx-auto">
-            Every bean follows a carefully crafted journey before
-            becoming your favorite coffee.
-          </p>
-
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-          {process.map((item) => (
-
-            <div
-              key={item.id}
-              className="rounded-3xl bg-[#22201E] p-8 border border-white/10 hover:border-amber-500 transition"
-            >
-
-              <div className="text-5xl text-amber-500">
-                {item.icon}
-              </div>
-
-              <span className="block mt-6 text-sm text-zinc-500">
-                {item.id}
-              </span>
-
-              <h3 className="text-2xl font-semibold mt-3">
-                {item.title}
-              </h3>
-
-              <p className="text-zinc-400 mt-4 leading-7">
-                {item.description}
-              </p>
-
+          {/* Nav buttons & Counter */}
+          <div className="flex items-center gap-3">
+            <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+              <span className="text-amber-400 font-bold">
+                0{currentIndex + 1}
+              </span>{" "}
+              / 0{processSteps.length}
             </div>
 
-          ))}
-
+            <div className="flex items-center gap-2">
+              <button
+                onClick={scrollPrev}
+                disabled={currentIndex === 0}
+                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                aria-label="Previous Step"
+              >
+                <FaChevronLeft size={14} />
+              </button>
+              <button
+                onClick={scrollNext}
+                disabled={currentIndex >= processSteps.length - 1}
+                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                aria-label="Next Step"
+              >
+                <FaChevronRight size={14} />
+              </button>
+            </div>
+          </div>
         </div>
 
-      </div>
+        {/* Horizontal Process Track */}
+        <div className="w-full overflow-hidden my-auto py-2">
+          <div
+            ref={trackRef}
+            className="flex gap-6 md:gap-8 px-6 md:px-16 items-center w-max transition-transform duration-100 ease-out"
+          >
+            {processSteps.map((step) => (
+              <div
+                key={step.id}
+                className="w-[280px] sm:w-[330px] md:w-[370px] bg-[#161513] rounded-2xl p-6 border border-zinc-800/90 hover:border-amber-500/80 transition-all duration-300 shadow-xl group shrink-0 flex flex-col justify-between"
+              >
+                {/* Step Header */}
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-500 flex items-center justify-center text-xl group-hover:bg-amber-500 group-hover:text-black transition-all duration-300">
+                    {step.icon}
+                  </div>
+                  <span className="text-3xl font-extrabold text-zinc-700 group-hover:text-amber-500/40 transition-colors">
+                    {step.id}
+                  </span>
+                </div>
 
+                {/* Step Image */}
+                <div className="my-4 rounded-xl overflow-hidden aspect-[16/10] relative bg-[#0f0e0d]">
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#161513] via-transparent to-transparent" />
+                </div>
+
+                {/* Title & Desc */}
+                <div>
+                  <span className="text-[11px] font-semibold text-amber-500 uppercase tracking-wider">
+                    {step.subtitle}
+                  </span>
+                  <h3 className="text-xl font-bold text-white mt-0.5 group-hover:text-amber-400 transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-zinc-400 text-xs mt-2 leading-relaxed line-clamp-2">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

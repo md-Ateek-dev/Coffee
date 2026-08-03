@@ -15,6 +15,8 @@ import Contact from "./Pages/Contact";
 
 import Cursor from "./Components/Comman/Cursor";
 import ScrollTop from "./Components/Comman/ScrollTop";
+import CartDrawer from "./Components/Comman/CartDrawer";
+import { ShopProvider } from "./Context/ShopContext";
 
 function AnimatedRoutes() {
 	const location = useLocation();
@@ -40,9 +42,12 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<Cursor />
-			<ScrollTop />
-			<AnimatedRoutes />
+			<ShopProvider>
+				<Cursor />
+				<ScrollTop />
+				<CartDrawer />
+				<AnimatedRoutes />
+			</ShopProvider>
 		</BrowserRouter>
 	);
 }

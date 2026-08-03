@@ -9,12 +9,12 @@ const ProductGallery = () => {
     (item) => item.id === Number(id)
   );
 
-  const images = product?.images || (product?.image ? [product.image, product.image, product.image, product.image] : []);
-  const [selectedImg, setSelectedImg] = useState(null);
+  const images = product?.images || (product?.image ? [product.image] : []);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   if (!product) return null;
 
-  const currentImage = selectedImg || images[0];
+  const currentImage = images[selectedIndex];
 
   return (
     <section className="py-24 bg-[#181715]">
@@ -26,20 +26,14 @@ const ProductGallery = () => {
               {images.map((img, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedImg(img)}
-                  className={`
-                    w-24
-                    h-24
-                    rounded-xl
-                    overflow-hidden
-                    border-2
-                    transition
-                    ${
-                      currentImage === img
-                        ? "border-amber-500"
-                        : "border-transparent"
-                    }
-                  `}
+                  type="button"
+                  onClick={() => setSelectedIndex(index)}
+                  aria-pressed={selectedIndex === index}
+                  className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition ${
+                    selectedIndex === index
+                      ? "border-amber-500 ring-2 ring-amber-500/30"
+                      : "border-transparent opacity-60 hover:opacity-100"
+                  }`}
                 >
                   <img
                     src={img}

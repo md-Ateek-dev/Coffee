@@ -3,7 +3,8 @@ import { FaCoffee, FaLeaf, FaAward } from "react-icons/fa";
 import useReveal from "../../Hooks/UseReveal";
 import useStaggerReveal from "../../Hooks/useStaggerReveal";
 
-import storyImage from "../../assets/images/about/About.jpg";
+// import storyImage from "../../assets/images/about/About.jpg";
+import OurStoryImage from "../../assets/videos/gallery_Video1.mp4";
 
 const features = [
   {
@@ -40,8 +41,12 @@ const OurStory = () => {
 
           <div className="relative">
 
-            <img
-              src={storyImage}
+            <video
+              src={OurStoryImage}
+              autoPlay
+              muted
+              loop
+              playsInline
               alt="Our Story"
               className="rounded-3xl w-full h-[650px] object-cover"
             />

@@ -1,10 +1,9 @@
 import Navbar from "../Components/Comman/Navbar";
 import Footer from "../Components/Comman/Footer";
 import PageTransition from "../Components/Comman/PageTransition";
+import CartDrawer from "../Components/Comman/CartDrawer";
 
-import ProductHero from "../Components/Products/ProductHero";
-import ProductGallery from "../Components/Products/ProductGallery";
-import ProductInfo from "../Components/Products/ProductInfo";
+import ProductDetail from "../Components/Products/ProductDetail";
 import Ingredients from "../Components/Products/Ingredients";
 import BrewingGuide from "../Components/Products/BrewingGuide";
 import Reviews from "../Components/Products/Reviews";
@@ -15,18 +14,11 @@ const Product = () => {
     <PageTransition>
       <Navbar />
 
-      <ProductHero />
-
-      <ProductGallery />
-
-      <ProductInfo />
+      <ProductDetail />
 
       <Ingredients />
-
       <BrewingGuide />
-
       <Reviews />
-
       <RelatedProducts />
 
       <Footer />

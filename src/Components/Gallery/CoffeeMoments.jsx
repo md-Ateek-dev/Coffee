@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaCamera, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-import useReveal from "../../Hooks/UseReveal";
+import { FaArrowRight, FaCamera, FaChevronLeft, FaChevronRight, FaTimes, FaExpand } from "react-icons/fa";
+import { useHorizontalScroll } from "../../Hooks/useHorizontalScroll";
 
 import coffee1 from "../../assets/images/gallery/coffee-1.webp";
 import coffee2 from "../../assets/images/gallery/coffee-2.webp";
@@ -38,123 +37,182 @@ const coffeeMoments = [
     category: "Atmosphere",
     desc: "Warm lighting, soft music, and fresh coffee aroma.",
   },
+  {
+    id: 5,
+    title: "Artisan Cold Brew",
+    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=800&auto=format&fit=crop",
+    category: "Cold Brew",
+    desc: "Slow drip 18-hour cold steeping for exceptionally smooth notes.",
+  },
+  {
+    id: 6,
+    title: "Fresh Baked Pastries",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
+    category: "Bakery",
+    desc: "Buttery, flaky pastries baked fresh every morning at dawn.",
+  },
 ];
 
 const CoffeeMoments = () => {
-  useReveal(".coffee-moments");
-  const [activeTab, setActiveTab] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const prevTab = () => {
-    setActiveTab((prev) => (prev - 1 + coffeeMoments.length) % coffeeMoments.length);
-  };
-
-  const nextTab = () => {
-    setActiveTab((prev) => (prev + 1) % coffeeMoments.length);
-  };
+  const {
+    sectionRef,
+    trackRef,
+    currentIndex,
+    scrollNext,
+    scrollPrev,
+  } = useHorizontalScroll({ extraHeight: 1.1 });
 
   return (
-    <section className="coffee-moments py-24 bg-[#0F0E0D]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      ref={sectionRef}
+      className="coffee-moments-horizontal relative bg-[#0B0A09] overflow-hidden border-t border-b border-zinc-800/60"
+    >
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-between py-6 relative">
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="uppercase tracking-[5px] text-amber-500 font-semibold text-sm">
-            Coffee Moments
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-3">
-            Every Cup Has A Story
-          </h2>
-          <p className="mt-4 text-zinc-300 leading-8 text-base">
-            Explore our curated gallery moments capturing peak roast perfection, barista craftsmanship, and cozy lounge spaces.
-          </p>
-        </div>
+        <div className="max-w-7xl w-full mx-auto px-6 flex items-center justify-between z-10 pt-2">
+          <div>
+            <span className="uppercase tracking-[4px] text-amber-500 font-semibold text-xs">
+              Moments In Motion
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-1">
+              Every Cup Has A Story
+            </h2>
+          </div>
 
-        {/* Carousel Showcase Controls */}
-        <div className="flex items-center justify-between mb-8">
-          <span className="text-zinc-400 font-medium text-sm">
-            Featured Moment <strong className="text-amber-400">#{activeTab + 1}</strong> of {coffeeMoments.length}
-          </span>
+          {/* Controls & Counter */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={prevTab}
-              className="w-10 h-10 rounded-full border border-zinc-700 bg-[#161512] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all"
-            >
-              <FaChevronLeft size={14} />
-            </button>
-            <button
-              onClick={nextTab}
-              className="w-10 h-10 rounded-full border border-zinc-700 bg-[#161512] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all"
-            >
-              <FaChevronRight size={14} />
-            </button>
+            <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+              <span className="text-amber-400 font-bold">
+                0{currentIndex + 1}
+              </span>{" "}
+              / 0{coffeeMoments.length}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={scrollPrev}
+                disabled={currentIndex === 0}
+                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                aria-label="Previous Moment"
+              >
+                <FaChevronLeft size={14} />
+              </button>
+              <button
+                onClick={scrollNext}
+                disabled={currentIndex >= coffeeMoments.length - 1}
+                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                aria-label="Next Moment"
+              >
+                <FaChevronRight size={14} />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Grid Cards - High Contrast */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {coffeeMoments.map((item, idx) => (
-            <div
-              key={item.id}
-              onClick={() => setActiveTab(idx)}
-              className={`
-                moment-card
-                group
-                cursor-pointer
-                overflow-hidden
-                rounded-3xl
-                bg-[#1a1815]
-                border
-                transition-all
-                duration-500
-                ${
-                  idx === activeTab
-                    ? "border-amber-500 shadow-xl shadow-amber-500/10 scale-[1.02]"
-                    : "border-zinc-700/60 hover:border-amber-500/60"
-                }
-              `}
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-[4/5]">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+        {/* Pinned Horizontal Gallery Track */}
+        <div className="w-full overflow-hidden my-auto py-2">
+          <div
+            ref={trackRef}
+            className="flex gap-6 md:gap-8 px-6 md:px-16 items-center w-max transition-transform duration-100 ease-out"
+          >
+            {coffeeMoments.map((item, idx) => (
+              <div
+                key={item.id}
+                className="w-[260px] sm:w-[310px] md:w-[350px] bg-[#161513] rounded-2xl overflow-hidden border border-zinc-800/90 hover:border-amber-500/80 transition-all duration-300 shadow-xl group shrink-0 relative flex flex-col justify-between"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden aspect-[4/3] bg-[#0f0e0d]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#161513] via-transparent to-transparent" />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                <div className="absolute top-4 left-4">
-                  <span className="bg-amber-500 text-black px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                  {/* Category Pill */}
+                  <span className="absolute top-3 left-3 bg-amber-500 text-black px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-md">
                     {item.category}
                   </span>
+
+                  {/* Expand Lightbox Button */}
+                  <button
+                    onClick={() => setSelectedImage(item)}
+                    className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all shadow-md"
+                    aria-label="Expand image"
+                  >
+                    <FaExpand size={11} />
+                  </button>
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center gap-1.5 text-amber-400 text-[11px] font-bold mb-1">
+                      <FaCamera />
+                      <span>Shot #{idx + 1}</span>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-zinc-400 text-xs mt-1.5 leading-relaxed line-clamp-2">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between">
+                    <span className="text-[10px] text-zinc-500 font-mono uppercase">
+                      GALLERY ITEM
+                    </span>
+                    <Link
+                      to="/shop"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 hover:gap-1.5 transition-all"
+                    >
+                      <span>Explore</span>
+                      <FaArrowRight size={10} />
+                    </Link>
+                  </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-center gap-2 text-amber-400 text-xs font-bold mb-2">
-                  <FaCamera />
-                  <span>Curated Moment</span>
-                </div>
-
-                <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="mt-2 text-zinc-300 text-sm line-clamp-2">
-                  {item.desc}
-                </p>
-
-                <Link
-                  to="/shop"
-                  className="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-amber-400 hover:gap-3 transition-all"
-                >
-                  Explore Brews <FaArrowRight size={12} />
-                </Link>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-6">
+          <div className="relative max-w-3xl w-full bg-[#181715] rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"
+            >
+              <FaTimes />
+            </button>
+            <div className="aspect-[16/10] overflow-hidden bg-black">
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <span className="text-amber-500 font-bold uppercase tracking-widest text-xs">
+                {selectedImage.category}
+              </span>
+              <h3 className="text-2xl font-bold text-white mt-1">
+                {selectedImage.title}
+              </h3>
+              <p className="text-zinc-400 mt-2 text-sm">
+                {selectedImage.desc}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

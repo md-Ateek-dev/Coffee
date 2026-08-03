@@ -3,9 +3,9 @@ import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 
 import useReveal from "../../Hooks/UseReveal";
 
-import poster1 from "../../assets/images/gallery/video-1.webp";
-import poster2 from "../../assets/images/gallery/video-2.webp";
-import poster3 from "../../assets/images/gallery/video-3.webp";
+// import poster1 from "../../assets/images/gallery/video-1.webp";
+// import poster2 from "../../assets/images/gallery/video-2.webp";
+// import poster3 from "../../assets/images/gallery/video-3.webp";
 
 import videoSrc1 from "../../assets/videos/Gallery_Video1.mp4";
 import videoSrc2 from "../../assets/videos/Gallery_Video2.mp4";
@@ -16,7 +16,6 @@ const videos = [
     id: 1,
     title: "Artisanal Coffee Pour Over",
     duration: "0:15",
-    thumbnail: poster1,
     videoUrl: videoSrc1,
     description: "Watch our master baristas craft precision pour-overs with optimal extraction.",
   },
@@ -24,7 +23,6 @@ const videos = [
     id: 2,
     title: "Latte Art Masterclass",
     duration: "0:12",
-    thumbnail: poster2,
     videoUrl: videoSrc2,
     description: "Intricate rosettes and tulip pours crafted in slow motion.",
   },
@@ -32,7 +30,6 @@ const videos = [
     id: 3,
     title: "Highland Bean Harvest",
     duration: "0:18",
-    thumbnail: poster3,
     videoUrl: videoSrc3,
     description: "Explore our eco-friendly organic highland bean plantations in Colombia.",
   },

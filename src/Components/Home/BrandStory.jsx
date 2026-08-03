@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import storyImage from "../../assets/images/about/story.jpg";
+import storyImage from "../../assets/images/about/About.jpg";
 import useReveal from "../../Hooks/UseReveal";
 const BrandStory = () => {
     useReveal(".brand-story");  

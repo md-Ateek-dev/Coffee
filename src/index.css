@@ -28,7 +28,12 @@ body {
 	background: #0f0e0d;
 	color: #f5f1ea;
 	overflow-x: hidden;
-	cursor: none;
+}
+
+@media (min-width: 768px) {
+	body {
+		cursor: none;
+	}
 }
 
 ::selection {
@@ -94,6 +99,17 @@ body {
 	animation: glowPulse 4s infinite ease-in-out;
 }
 
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(1.03);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
 @keyframes glowPulse {
 	0%,
 	100% {
@@ -105,7 +121,23 @@ body {
 	}
 }
 
-a,
-button {
-	cursor: none;
+@media (min-width: 768px) {
+	a,
+	button,
+	[role="button"],
+	input,
+	select,
+	textarea,
+	label {
+		cursor: none;
+	}
+}
+
+.scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
 }

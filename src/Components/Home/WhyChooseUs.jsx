@@ -90,12 +90,12 @@ const WhyChooseUs = () => {
 
           {/* Center */}
 
-          <div className="flex justify-center">
+          <div className="flex justify-center border border-white/10 rounded-3xl p-2 lg:p-8">
 
             <img
               src={coffeeImage}
               alt="Coffee"
-              className="max-w-sm w-full"
+              className="max-w-sm w-full rounded-2xl"
             />
 
           </div>

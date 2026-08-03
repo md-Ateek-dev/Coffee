@@ -8,29 +8,18 @@ const Pagination = ({
   const pages = [...Array(totalPages).keys()].map((n) => n + 1);
 
   return (
-    <section className="pb-24">
+    <section className="pb-16 sm:pb-20 md:pb-24 px-4">
 
-      <div className="flex justify-center items-center gap-3 flex-wrap">
+      <div className="flex justify-center items-center gap-2 sm:gap-3 flex-wrap">
 
         {/* Previous */}
 
         <button
           onClick={() => setCurrentPage((prev) => prev - 1)}
           disabled={currentPage === 1}
-          className="
-            px-5
-            py-3
-            rounded-full
-            border
-            border-zinc-700
-            text-white
-            disabled:opacity-50
-            disabled:cursor-not-allowed
-            hover:border-amber-500
-            transition
-          "
+          className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border border-zinc-700 text-white text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed hover:border-amber-500 transition"
         >
-          Previous
+          Prev
         </button>
 
         {/* Page Numbers */}
@@ -39,17 +28,11 @@ const Pagination = ({
           <button
             key={page}
             onClick={() => setCurrentPage(page)}
-            className={`
-              w-12
-              h-12
-              rounded-full
-              transition
-              ${
+            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full text-sm sm:text-base transition ${
                 currentPage === page
-                  ? "bg-amber-500 text-black"
+                  ? "bg-amber-500 text-black font-bold"
                   : "bg-[#181715] text-white hover:bg-amber-500 hover:text-black"
-              }
-            `}
+              }`}
           >
             {page}
           </button>
@@ -60,18 +43,7 @@ const Pagination = ({
         <button
           onClick={() => setCurrentPage((prev) => prev + 1)}
           disabled={currentPage === totalPages}
-          className="
-            px-5
-            py-3
-            rounded-full
-            border
-            border-zinc-700
-            text-white
-            disabled:opacity-50
-            disabled:cursor-not-allowed
-            hover:border-amber-500
-            transition
-          "
+          className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border border-zinc-700 text-white text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed hover:border-amber-500 transition"
         >
           Next
         </button>

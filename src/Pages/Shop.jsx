@@ -7,10 +7,8 @@ import Footer from "../Components/Comman/Footer";
 import PageTransition from "../Components/Comman/PageTransition";
 
 import ShopHero from "../Components/Shop/ShopHero";
-import SearchBar from "../Components/Shop/SearchBar";
-import CategoryFilter from "../Components/Shop/CategoryFilter";
+import ShopHorizontalShowcase from "../Components/Shop/ShopHorizontalShowcase";
 import ProductGrid from "../Components/Shop/ProductGrid";
-
 import Pagination from "../Components/Shop/Pagination";
 
 const Shop = () => {
@@ -24,21 +22,14 @@ const Shop = () => {
 
       <ShopHero />
 
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+      <ShopHorizontalShowcase products={products} />
 
-      <CategoryFilter
-        products={products}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      
       <ProductGrid
         products={products}
         searchTerm={searchTerm}
         selectedCategory={selectedCategory}
+        setSearchTerm={setSearchTerm}
+        setSelectedCategory={setSelectedCategory}
       />
 
       <Pagination
