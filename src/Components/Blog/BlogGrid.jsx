@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 import useReveal from "../../Hooks/UseReveal";
+import useStaggerReveal from "../../Hooks/useStaggerReveal";
 
 import blog1 from "../../assets/images/blog/blog-1.webp";
 import blog2 from "../../assets/images/blog/blog-2.webp";
@@ -27,7 +28,8 @@ const blogs = [
     author: "Aura Coffee",
     date: "12 Jul 2026",
     readTime: "5 min",
-    excerpt: "Master grind sizes, water temperature ratios, and pour speed for clean flavor profiles.",
+    excerpt:
+      "Master grind sizes, water temperature ratios, and pour speed for clean flavor profiles.",
   },
   {
     id: 2,
@@ -37,7 +39,8 @@ const blogs = [
     author: "Aura Coffee",
     date: "10 Jul 2026",
     readTime: "7 min",
-    excerpt: "An in-depth guide to bean origins, caffeine levels, acidity, and sensory differences.",
+    excerpt:
+      "An in-depth guide to bean origins, caffeine levels, acidity, and sensory differences.",
   },
   {
     id: 3,
@@ -47,7 +50,8 @@ const blogs = [
     author: "Aura Coffee",
     date: "08 Jul 2026",
     readTime: "6 min",
-    excerpt: "Learn microfoam texturing techniques to pour hearts and rosettes at home.",
+    excerpt:
+      "Learn microfoam texturing techniques to pour hearts and rosettes at home.",
   },
   {
     id: 4,
@@ -57,7 +61,8 @@ const blogs = [
     author: "Aura Coffee",
     date: "05 Jul 2026",
     readTime: "4 min",
-    excerpt: "How direct trade practices empower local highland farming families worldwide.",
+    excerpt:
+      "How direct trade practices empower local highland farming families worldwide.",
   },
   {
     id: 5,
@@ -67,7 +72,8 @@ const blogs = [
     author: "Aura Coffee",
     date: "02 Jul 2026",
     readTime: "8 min",
-    excerpt: "Understanding tamping pressure, extraction times, and Crema formation.",
+    excerpt:
+      "Understanding tamping pressure, extraction times, and Crema formation.",
   },
   {
     id: 6,
@@ -77,12 +83,14 @@ const blogs = [
     author: "Aura Coffee",
     date: "30 Jun 2026",
     readTime: "6 min",
-    excerpt: "Why degassing and peak 7-14 day roast windows create unforgettable cups.",
+    excerpt:
+      "Why degassing and peak 7-14 day roast windows create unforgettable cups.",
   },
 ];
 
 const BlogGrid = () => {
   useReveal(".blog-grid");
+  useStaggerReveal(".blog-grid", ".blog-card", 0.1);
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
@@ -94,7 +102,10 @@ const BlogGrid = () => {
   const scrollRight = () => {
     if (scrollRef.current) {
       const container = scrollRef.current;
-      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+      if (
+        container.scrollLeft + container.clientWidth >=
+        container.scrollWidth - 10
+      ) {
         container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
         container.scrollBy({ left: 380, behavior: "smooth" });
@@ -123,12 +134,13 @@ const BlogGrid = () => {
               Coffee Stories & Guides
             </h2>
             <p className="text-zinc-300 mt-2 max-w-xl text-base">
-              Slide through our expert coffee guides, brewing tutorials, and origin stories.
+              Slide through our expert coffee guides, brewing tutorials, and
+              origin stories.
             </p>
           </div>
 
           {/* Slider Arrows */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               onClick={scrollLeft}
               className="w-12 h-12 rounded-full border border-zinc-700 bg-[#1a1815] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-lg"
@@ -250,6 +262,24 @@ const BlogGrid = () => {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Mobile Navigation Controls Below Cards */}
+        <div className="sm:hidden flex items-center justify-center gap-3 mt-6">
+          <button
+            onClick={scrollLeft}
+            className="w-10 h-10 rounded-full border border-zinc-700 bg-[#1a1815] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all shadow-lg"
+            aria-label="Previous Article"
+          >
+            <FaChevronLeft size={14} />
+          </button>
+          <button
+            onClick={scrollRight}
+            className="w-10 h-10 rounded-full border border-zinc-700 bg-[#1a1815] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all shadow-lg"
+            aria-label="Next Article"
+          >
+            <FaChevronRight size={14} />
+          </button>
         </div>
       </div>
     </section>

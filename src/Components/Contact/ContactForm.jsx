@@ -45,16 +45,16 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact-form" className="contact-form py-24 bg-[#0F0E0D]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="contact-form" className="contact-form section-y bg-[#0F0E0D]">
+      <div className="page-container">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Left */}
           <div>
             <span className="uppercase tracking-[5px] text-amber-500 font-semibold text-sm">
               Get In Touch
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold mt-3 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 text-white">
               Let's Brew Something Amazing Together
             </h2>
 

@@ -1,30 +1,23 @@
 import ProductCard from "../Comman/ProductCard";
-
 import { FaSearch, FaTimes } from "react-icons/fa";
-
-
+import useReveal from "../../Hooks/UseReveal";
+import useStaggerReveal from "../../Hooks/useStaggerReveal";
 
 const ProductGrid = ({
-
   products,
-
   searchTerm,
-
   selectedCategory,
-
   setSearchTerm,
-
   setSelectedCategory,
-
 }) => {
+  useReveal(".shop-grid-section");
+  useStaggerReveal(".shop-grid-section", ".coffee-card", 0.08);
 
   const categories = [
-
     "All",
-
     ...new Set(products.map((product) => product.category)),
-
   ];
+
 
 
 
@@ -47,14 +40,14 @@ const ProductGrid = ({
 
 
   return (
+    <section className="shop-grid-section py-12 sm:py-16 md:py-20 lg:py-24 bg-[#0F0E0D] relative overflow-hidden">
 
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#0F0E0D] relative overflow-hidden">
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[200px] sm:h-[300px] bg-amber-500/5 blur-[100px] rounded-full pointer-events-none" />
 
 
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="page-container relative z-10">
 
         {/* Header */}
 

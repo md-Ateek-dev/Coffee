@@ -62,7 +62,7 @@ const CoffeeMoments = () => {
     currentIndex,
     scrollNext,
     scrollPrev,
-  } = useHorizontalScroll({ extraHeight: 1.1 });
+  } = useHorizontalScroll({ extraHeight: 0.7 });
 
   return (
     <section
@@ -83,14 +83,14 @@ const CoffeeMoments = () => {
 
           {/* Controls & Counter */}
           <div className="flex items-center gap-3">
-            <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+            <div className="hidden sm:block text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
               <span className="text-amber-400 font-bold">
                 0{currentIndex + 1}
               </span>{" "}
               / 0{coffeeMoments.length}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <button
                 onClick={scrollPrev}
                 disabled={currentIndex === 0}
@@ -179,6 +179,32 @@ const CoffeeMoments = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile Navigation Controls Below Cards */}
+        <div className="sm:hidden flex items-center justify-center gap-3 my-2 z-10">
+          <button
+            onClick={scrollPrev}
+            disabled={currentIndex === 0}
+            className="w-9 h-9 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+            aria-label="Previous Moment"
+          >
+            <FaChevronLeft size={14} />
+          </button>
+          <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+            <span className="text-amber-400 font-bold">
+              0{currentIndex + 1}
+            </span>{" "}
+            / 0{coffeeMoments.length}
+          </div>
+          <button
+            onClick={scrollNext}
+            disabled={currentIndex >= coffeeMoments.length - 1}
+            className="w-9 h-9 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+            aria-label="Next Moment"
+          >
+            <FaChevronRight size={14} />
+          </button>
         </div>
       </div>
 

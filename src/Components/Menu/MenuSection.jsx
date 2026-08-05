@@ -1,7 +1,7 @@
 import ProductCard from "../Comman/ProductCard";
 import useReveal from "../../Hooks/UseReveal";
 import useStaggerReveal from "../../Hooks/useStaggerReveal";
-import { MENU_EDGE_PADDING, MENU_CARD_GAP } from "./menuLayout";
+import { MENU_CARD_GAP } from "./menuLayout";
 
 const MenuSection = ({
   sectionClass,
@@ -19,28 +19,28 @@ const MenuSection = ({
   return (
     <section
       id={sectionClass}
-      className={`${sectionClass} py-14 sm:py-16 md:py-20 ${bgClass}`}
+      className={`${sectionClass} py-14 sm:py-16 md:py-20 lg:py-24 ${bgClass} border-t border-zinc-800/40`}
     >
-      <div className={`max-w-7xl mx-auto ${MENU_EDGE_PADDING}`}>
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+      <div className="page-container">
+        <div className="text-center mb-10 sm:mb-12 md:mb-14">
           <p className="uppercase tracking-[3px] sm:tracking-[4px] text-amber-500 text-xs sm:text-sm font-semibold">
             {eyebrow}
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 sm:mt-3 text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-2 sm:mt-3 text-white tracking-tight">
             {title}
           </h2>
-          <p className="text-zinc-400 mt-2 sm:mt-3 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-zinc-400 mt-3 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             {description}
           </p>
         </div>
 
         {products.length === 0 ? (
-          <p className="text-center text-zinc-500 text-sm py-8">
+          <p className="text-center text-zinc-500 text-sm py-12">
             No items available in this category yet.
           </p>
         ) : (
           <div
-            className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${MENU_CARD_GAP}`}
+            className={`grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${MENU_CARD_GAP}`}
           >
             {products.map((product) => (
               <ProductCard key={product.id} product={product} size="medium" />
@@ -53,3 +53,4 @@ const MenuSection = ({
 };
 
 export default MenuSection;
+

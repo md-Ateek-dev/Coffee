@@ -24,10 +24,89 @@
 	--radius: 16px;
 }
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 body {
 	background: #0f0e0d;
 	color: #f5f1ea;
 	overflow-x: hidden;
+	min-width: 320px;
+}
+
+img,
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Shared responsive layout utilities */
+.page-container {
+	max-width: 80rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	width: 100%;
+}
+
+@media (min-width: 640px) {
+	.page-container {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.page-container {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+.section-y {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+	.section-y {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.section-y {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.section-y {
+		padding-top: 6rem;
+		padding-bottom: 6rem;
+	}
 }
 
 @media (min-width: 768px) {

@@ -9,7 +9,11 @@ import {
   FaHistory,
 } from "react-icons/fa";
 import { useHorizontalScroll } from "../../Hooks/useHorizontalScroll";
-
+import Img1 from "../../assets/images/about/Image1.jpg";
+import Img2 from "../../assets/images/about/Img6.jpg";
+import Img3 from "../../assets/images/about/Img2.jpg";
+import Img4 from "../../assets/images/about/Img4.jpg";
+import Img5 from "../../assets/images/about/Img5.jpg";
 const timelineEvents = [
   {
     id: 1,
@@ -19,7 +23,7 @@ const timelineEvents = [
     subtitle: "The Origin",
     description:
       "Started with a passion to serve authentic, handcrafted coffee made from ethically sourced beans.",
-    image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop",
+    image: Img1,
   },
   {
     id: 2,
@@ -29,7 +33,7 @@ const timelineEvents = [
     subtitle: "Physical Presence",
     description:
       "Opened our first sanctuary for coffee lovers, introducing signature pour-over roasts and pastries.",
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    image: Img2,
   },
   {
     id: 3,
@@ -39,7 +43,7 @@ const timelineEvents = [
     subtitle: "Community Growth",
     description:
       "Built a thriving community of regular coffee aficionados and launched roasting workshops.",
-    image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    image: Img3,
   },
   {
     id: 4,
@@ -49,7 +53,7 @@ const timelineEvents = [
     subtitle: "Global Sourcing",
     description:
       "Partnered directly with sustainable, fair-trade coffee farms across Ethiopia and Guatemala.",
-    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop",
+    image: Img4,
   },
   {
     id: 5,
@@ -59,18 +63,13 @@ const timelineEvents = [
     subtitle: "A New Chapter",
     description:
       "Reached an inspiring milestone while continuing our commitment to sustainable roasting.",
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
+    image: Img5,
   },
 ];
 
 const Timeline = () => {
-  const {
-    sectionRef,
-    trackRef,
-    currentIndex,
-    scrollNext,
-    scrollPrev,
-  } = useHorizontalScroll({ extraHeight: 1.1 });
+  const { sectionRef, trackRef, currentIndex, scrollNext, scrollPrev } =
+    useHorizontalScroll({ extraHeight: 0.7 });
 
   return (
     <section
@@ -91,14 +90,14 @@ const Timeline = () => {
 
           {/* Controls & Counter */}
           <div className="flex items-center gap-3">
-            <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+            <div className="hidden sm:block text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
               <span className="text-amber-400 font-bold">
                 0{currentIndex + 1}
               </span>{" "}
               / 0{timelineEvents.length}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2">
               <button
                 onClick={scrollPrev}
                 disabled={currentIndex === 0}
@@ -173,6 +172,32 @@ const Timeline = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile Navigation Controls Below Cards */}
+        <div className="sm:hidden flex items-center justify-center gap-3 my-2 z-10">
+          <button
+            onClick={scrollPrev}
+            disabled={currentIndex === 0}
+            className="w-9 h-9 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+            aria-label="Previous Milestone"
+          >
+            <FaChevronLeft size={14} />
+          </button>
+          <div className="text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
+            <span className="text-amber-400 font-bold">
+              0{currentIndex + 1}
+            </span>{" "}
+            / 0{timelineEvents.length}
+          </div>
+          <button
+            onClick={scrollNext}
+            disabled={currentIndex >= timelineEvents.length - 1}
+            className="w-9 h-9 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+            aria-label="Next Milestone"
+          >
+            <FaChevronRight size={14} />
+          </button>
         </div>
       </div>
     </section>

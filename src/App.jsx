@@ -12,6 +12,7 @@ import About from "./Pages/About";
 import Gallery from "./Pages/Gallery";
 import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
+import Wishlist from "./Pages/Wishlist";
 
 import Cursor from "./Components/Comman/Cursor";
 import ScrollTop from "./Components/Comman/ScrollTop";
@@ -32,10 +33,12 @@ function AnimatedRoutes() {
 				<Route path="/gallery" element={<Gallery />} />
 				<Route path="/blog" element={<Blog />} />
 				<Route path="/contact" element={<Contact />} />
+				<Route path="/wishlist" element={<Wishlist />} />
 			</Routes>
 		</AnimatePresence>
 	);
 }
+
 
 function App() {
 	useLenis();

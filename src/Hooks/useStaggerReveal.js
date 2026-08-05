@@ -4,27 +4,40 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useStaggerReveal = (container, items) => {
+const useStaggerReveal = (container, items, staggerDelay = 0.08) => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(items, {
-        y: 40,
-        opacity: 0,
-        scale: 0.98,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power2.out",
-        clearProps: "transform,opacity",
-        scrollTrigger: {
-          trigger: container,
-          start: "top 92%",
-          once: true,
+      const targets = typeof items === "string" ? gsap.utils.toArray(items) : items;
+      if (!targets || targets.length === 0) return;
+
+      gsap.fromTo(
+        targets,
+        {
+          opacity: 0,
+          y: 35,
+          scale: 0.95,
         },
-      });
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.65,
+          stagger: staggerDelay,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 88%",
+            end: "bottom 12%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
     });
 
     return () => ctx.revert();
-  }, [container, items]);
+  }, [container, items, staggerDelay]);
 };
 
 export default useStaggerReveal;
+
+

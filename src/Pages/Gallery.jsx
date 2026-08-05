@@ -12,10 +12,10 @@ const Gallery = () => {
     <PageTransition>
       <Navbar />
       <GalleryHero />
-      <CoffeeMoments />
+      {/* <CoffeeMoments /> */}
       <VideoGallery />
       <MasonryGallery />
-      <InstagramFeed />
+      {/* <InstagramFeed /> */}
       <Footer />
     </PageTransition>
   );

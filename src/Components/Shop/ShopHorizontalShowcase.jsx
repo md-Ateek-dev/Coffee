@@ -75,7 +75,7 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
 
             <button
               onClick={prevCard}
-              className="w-11 h-11 rounded-full bg-[#161513] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-md"
+              className="hidden sm:flex w-11 h-11 rounded-full bg-[#161513] border border-zinc-700/80 text-white items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-md"
               aria-label="Previous Coffee"
             >
               <FaChevronLeft size={14} />
@@ -83,7 +83,7 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
 
             <button
               onClick={nextCard}
-              className="w-11 h-11 rounded-full bg-[#161513] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-md"
+              className="hidden sm:flex w-11 h-11 rounded-full bg-[#161513] border border-zinc-700/80 text-white items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-md"
               aria-label="Next Coffee"
             >
               <FaChevronRight size={14} />
@@ -186,20 +186,36 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
           })}
         </div>
 
-        {/* Dots Navigation */}
-        <div className="flex items-center justify-center gap-2 mt-6">
-          {items.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === activeIndex
-                  ? "w-8 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.6)]"
-                  : "w-2 bg-zinc-800 hover:bg-zinc-700"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+        {/* Dots Navigation & Mobile Controls */}
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <button
+            onClick={prevCard}
+            className="sm:hidden w-10 h-10 rounded-full bg-[#161513] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all shadow-md shrink-0"
+            aria-label="Previous Coffee"
+          >
+            <FaChevronLeft size={14} />
+          </button>
+          <div className="flex items-center gap-2">
+            {items.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === activeIndex
+                    ? "w-8 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.6)]"
+                    : "w-2 bg-zinc-800 hover:bg-zinc-700"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+          <button
+            onClick={nextCard}
+            className="sm:hidden w-10 h-10 rounded-full bg-[#161513] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all shadow-md shrink-0"
+            aria-label="Next Coffee"
+          >
+            <FaChevronRight size={14} />
+          </button>
         </div>
       </div>
     </section>

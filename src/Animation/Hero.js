@@ -21,51 +21,51 @@ export const heroAnimation = () => {
   });
 
   tl.from(".hero-subtitle", {
-    y: 30,
+    y: 20,
     opacity: 0,
-    duration: 0.6,
+    duration: 0.45,
     clearProps: "transform,opacity",
   })
     .from(
       ".hero-title",
       {
-        y: 50,
+        y: 36,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.55,
         clearProps: "transform,opacity",
       },
-      "-=0.3"
+      "-=0.25"
     )
     .from(
       ".hero-text",
       {
-        y: 30,
+        y: 20,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.45,
         clearProps: "transform,opacity",
       },
-      "-=0.4"
+      "-=0.3"
     )
     .from(
       ".hero-btn",
       {
-        y: 25,
+        y: 16,
         opacity: 0,
-        stagger: 0.15,
-        duration: 0.6,
+        stagger: 0.1,
+        duration: 0.45,
         clearProps: "transform,opacity",
       },
-      "-=0.3"
+      "-=0.25"
     )
     .from(
       ".hero-stats",
       {
-        y: 25,
+        y: 16,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.45,
         clearProps: "transform,opacity",
       },
-      "-=0.3"
+      "-=0.25"
     )
     .from(
       ".hero-image",

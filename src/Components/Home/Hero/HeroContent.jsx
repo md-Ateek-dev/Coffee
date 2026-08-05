@@ -18,8 +18,10 @@ const HeroContent = () => {
       </h1>
 
       {/* Description */}
-      <p className="hero-text text-zinc-300 mt-6 text-base sm:text-lg leading-relaxed max-w-xl font-light">
-        Discover handcrafted specialty coffee made from ethically sourced micro-lot highland beans. Unforgettable aroma, velvety texture, and master roasting in every cup.
+      <p className="hero-text text-white mt-6 text-base sm:text-lg leading-relaxed max-w-xl font-light">
+        Discover handcrafted specialty coffee made from ethically sourced
+        micro-lot highland beans. Unforgettable aroma, velvety texture, and
+        master roasting in every cup.
       </p>
 
       {/* Buttons */}
