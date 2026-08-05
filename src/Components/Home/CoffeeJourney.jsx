@@ -1,7 +1,7 @@
 import { GiCoffeeBeans } from "react-icons/gi";
 import { FaFire, FaMugHot, FaSmile } from "react-icons/fa";
 import processImage1 from "../../assets/images/process/process_Image1.jpg";
-import processImage2 from "../../assets/images/process/Image1.jpg";
+import processImage2 from "../../assets/images/process/Process_Image2.jpg";
 import processImage3 from "../../assets/images/process/process_Image4.jpg";
 import processImage4 from "../../assets/images/process/process_Image3.jpg";
 
