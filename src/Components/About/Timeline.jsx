@@ -10,10 +10,10 @@ import {
 } from "react-icons/fa";
 import { useHorizontalScroll } from "../../Hooks/useHorizontalScroll";
 import Img1 from "../../assets/images/about/Image1.jpg";
-import Img2 from "../../assets/images/about/Img6.jpg";
+import Img2 from "../../assets/images/about/img6.jpg";
 import Img3 from "../../assets/images/about/Img2.jpg";
-import Img4 from "../../assets/images/about/Img4.jpg";
-import Img5 from "../../assets/images/about/Img5.jpg";
+import Img4 from "../../assets/images/about/img4.jpg";
+import Img5 from "../../assets/images/about/img5.jpg";
 const timelineEvents = [
   {
     id: 1,
