@@ -4,7 +4,7 @@ import useReveal from "../../Hooks/UseReveal";
 import useStaggerReveal from "../../Hooks/useStaggerReveal";
 
 // import storyImage from "../../assets/images/about/About.jpg";
-import OurStoryImage from "../../assets/videos/gallery_Video1.mp4";
+import OurStoryImage from "../../assets/videos/Gallery_Video1.mp4";
 
 const features = [
   {
