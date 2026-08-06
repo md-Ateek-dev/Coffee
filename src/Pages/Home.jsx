@@ -9,7 +9,7 @@ import CoffeeJourney from "../Components/Home/CoffeeJourney";
 import BestSellers from "../Components/Home/BestSellers";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Testimonials from "../Components/Home/Testimonials";
-import CTA from "../Components/Home/CTA";
+// import CTA from "../Components/Home/CTA";
 import PageTransition from "../Components/Comman/PageTransition";
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
       <BestSellers />
       <WhyChooseUs />
       <Testimonials />
-      <CTA />
+      {/* <CTA /> */}
       <Footer />
     </PageTransition>
   );

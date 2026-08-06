@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa";
 
 const process = [
-
   {
     icon: <FaSeedling />,
     title: "Bean Selection",
@@ -51,7 +50,6 @@ export default function CoffeeProcess() {
 
   return (
     <section className="process-section py-24 bg-[#181715] text-white">
-
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="uppercase tracking-[5px] text-amber-500">
@@ -107,7 +105,6 @@ export default function CoffeeProcess() {
                   } w-10 h-[3px] bg-zinc-600`}
                 />
                 <div className="process-card bg-[#22201E] border border-zinc-800 rounded-3xl p-8 hover:border-amber-500 transition-all duration-300">
-
                   <div className="w-16 h-16 rounded-full bg-amber-500 text-black flex items-center justify-center text-2xl">
                     {step.icon}
                   </div>
