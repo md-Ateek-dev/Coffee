@@ -5,7 +5,7 @@ import coldbrew from "../assets/images/products/coldbrew.png";
 
 const BestSellers = [
   {
-    id: 1,
+    id: 2,
     title: "Signature Latte",
     image: latte,
     price: "$18",
@@ -14,13 +14,13 @@ const BestSellers = [
       "Creamy milk blended with rich espresso for the perfect balance.",
   },
   {
-    id: 2,
+    id: 1,
     title: "Espresso",
     image: espresso,
     price: "$12",
   },
   {
-    id: 3,
+    id: 5,
     title: "Mocha",
     image: mocha,
     price: "$15",

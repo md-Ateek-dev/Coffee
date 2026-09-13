@@ -14,7 +14,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] sm:min-h-screen overflow-hidden flex items-start sm:items-center justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-6 sm:pb-12 lg:pb-20 bg-[#0F0E0D]">
+    <section className="relative min-h-[100dvh] sm:min-h-screen overflow-hidden flex items-start sm:items-center justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-32 sm:pb-8 bg-[#0F0E0D]">
       {/* Fullscreen Ambient Video Background */}
       <LazyVideo
         src={heroVideo}

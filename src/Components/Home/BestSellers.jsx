@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  FaStar,
-  FaShoppingCart,
-  FaHeart,
-  FaFire,
-} from "react-icons/fa";
+import { FaStar, FaShoppingCart, FaHeart, FaFire } from "react-icons/fa";
 import bestSellers from "../../Data/BestSeller.js";
 import useReveal from "../../Hooks/UseReveal";
 import useStaggerReveal from "../../Hooks/useStaggerReveal";
@@ -121,7 +116,7 @@ const BestSellers = () => {
                             category: "Best Seller",
                             description: featured.description,
                           },
-                          1
+                          1,
                         )
                       }
                       className="flex items-center gap-2 bg-amber-500 text-black px-5 py-3 rounded-full font-bold hover:bg-amber-400 transition text-sm"
@@ -184,7 +179,7 @@ const BestSellers = () => {
                           category: "Best Seller",
                           description: "",
                         },
-                        1
+                        1,
                       )
                     }
                     className="w-9 h-9 rounded-full bg-amber-500 text-black flex items-center justify-center hover:bg-amber-400 transition opacity-0 group-hover:opacity-100"

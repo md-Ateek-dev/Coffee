@@ -1,75 +1,212 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import testimonials from "../../Data/Testimonials";
-import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
-import useReveal from "../../Hooks/UseReveal";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
-const Testimonials = () => {
-  useReveal(".testimonials");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const total = testimonials.length;
+/* ------------------------------------------------------------------
+   Same token system as WhyChooseUs / Footer:
+   bg #120F0C · card #1C1712 · caramel #C68A4E · cream #F3EAD9
+   display: 'Fraunces'   body: 'Manrope'
+------------------------------------------------------------------- */
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % total);
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + total) % total);
+const FONT_IMPORT =
+  "@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap');";
+
+const SLIDE_DURATION = 6000;
+
+/* Local scroll-reveal — swap back for your own useReveal hook if you'd
+   rather keep that; kept inline so this file runs standalone. */
+function useInView(threshold = 0.2) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 6000);
+    const node = ref.current;
+    if (!node) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold },
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, [threshold]);
+
+  return [ref, inView];
+}
+
+const Testimonials = () => {
+  const [sectionRef, sectionInView] = useInView(0.15);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("next");
+  const [paused, setPaused] = useState(false);
+  const total = testimonials.length;
+
+  const goTo = useCallback(
+    (idx, dir) => {
+      setDirection(dir);
+      setCurrentIndex((idx + total) % total);
+    },
+    [total],
+  );
+
+  const nextSlide = useCallback(
+    () => goTo(currentIndex + 1, "next"),
+    [currentIndex, goTo],
+  );
+  const prevSlide = () => goTo(currentIndex - 1, "prev");
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(nextSlide, SLIDE_DURATION);
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [nextSlide, paused]);
+
+  const active = testimonials[currentIndex];
 
   return (
-    <section className="testimonials section-y bg-[#0B0A0A] border-t border-zinc-800 relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="testimonials h-screen section-y relative overflow-hidden border-t border-zinc-800 bg-[#120F0C] text-zinc-300"
+    >
+      <style>{`
+        ${FONT_IMPORT}
+        .testimonials { font-family: 'Manrope', sans-serif; }
+
+        @keyframes cardIn {
+          from { opacity: 0; transform: translateY(14px) scale(0.985); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes cardInReverse {
+          from { opacity: 0; transform: translateY(-14px) scale(0.985); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .slide-next { animation: cardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+        .slide-prev { animation: cardInReverse 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+        @keyframes fillBar {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+        .pour-bar { animation: fillBar ${SLIDE_DURATION}ms linear forwards; }
+        .pour-bar.paused { animation-play-state: paused; }
+
+        @keyframes starPop {
+          0%   { transform: scale(0); opacity: 0; }
+          70%  { transform: scale(1.15); opacity: 1; }
+          100% { transform: scale(1); }
+        }
+        .star-pop { animation: starPop 0.4s ease-out both; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .slide-next, .slide-prev, .pour-bar, .star-pop { animation: none !important; }
+        }
+      `}</style>
+
+      {/* ambient glow, consistent with the rest of the page */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-24 h-[380px] w-[560px] -translate-x-1/2 rounded-full opacity-[0.10] blur-[110px]"
+        style={{ background: "#C68A4E" }}
+      />
+
       <div className="page-container relative z-10">
-        <div className="text-center mb-10 sm:mb-12 md:mb-16 max-w-2xl mx-auto">
-          <p className="uppercase tracking-[3px] sm:tracking-[5px] text-amber-500 font-semibold text-xs sm:text-sm">
+        <div
+          className="mx-auto mb-10 max-w-2xl text-center transition-all duration-700 ease-out sm:mb-12 md:mb-16"
+          style={{
+            opacity: sectionInView ? 1 : 0,
+            transform: sectionInView ? "translateY(0)" : "translateY(18px)",
+          }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-[3px] text-[#C68A4E] sm:tracking-[5px] sm:text-sm">
             Customer Reviews
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 sm:mt-3">
+          <h2
+            className="mt-2 text-2xl text-white sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl"
+            style={{ fontFamily: "'Fraunces', serif", fontWeight: 600 }}
+          >
             What Coffee Lovers Say
           </h2>
-          <p className="text-zinc-300 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base px-2">
-            Discover real experiences from our daily guests, home brewers, and coffee connoisseurs.
+          <p className="mt-3 px-2 text-sm leading-relaxed text-zinc-400 sm:mt-4 sm:text-base">
+            Discover real experiences from our daily guests, home brewers, and
+            coffee connoisseurs.
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="bg-[#1a1815] border border-zinc-700/70 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl shadow-black/80 transition-all duration-500 relative">
-            <FaQuoteLeft className="text-amber-500/20 text-4xl sm:text-6xl absolute top-5 sm:top-8 left-5 sm:left-8 pointer-events-none" />
+        <div
+          className="relative mx-auto max-w-4xl"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div
+            key={currentIndex}
+            className={`relative overflow-hidden rounded-2xl border border-zinc-700/60 bg-[#1C1712] p-6 shadow-2xl shadow-black/80 sm:rounded-3xl sm:p-8 md:p-12 ${
+              direction === "next" ? "slide-next" : "slide-prev"
+            }`}
+          >
+            <Quote
+              className="pointer-events-none absolute left-5 top-5 h-10 w-10 text-[#C68A4E]/15 sm:left-8 sm:top-8 sm:h-14 sm:w-14"
+              fill="currentColor"
+              strokeWidth={0}
+            />
 
-            <div className="flex gap-1 text-amber-400 text-sm sm:text-lg mb-4 sm:mb-6 relative z-10">
+            <div className="relative z-10 mb-4 flex gap-1 text-[#C68A4E] sm:mb-6">
               {[...Array(5)].map((_, i) => (
-                <FaStar key={i} />
+                <Star
+                  key={i}
+                  className="star-pop h-4 w-4 sm:h-[18px] sm:w-[18px]"
+                  fill="currentColor"
+                  strokeWidth={0}
+                  style={{ animationDelay: `${i * 70}ms` }}
+                />
               ))}
             </div>
 
-            <p className="text-zinc-100 text-base sm:text-lg md:text-xl lg:text-2xl font-light italic leading-relaxed relative z-10 mb-6 sm:mb-8">
-              &ldquo;{testimonials[currentIndex].review}&rdquo;
+            <p className="relative z-10 mb-6 text-base font-light italic leading-relaxed text-zinc-100 sm:mb-8 sm:text-lg md:text-xl lg:text-2xl">
+              &ldquo;{active.review}&rdquo;
             </p>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-zinc-800 pt-5 sm:pt-6">
+            <div className="flex flex-col gap-3 border-t border-zinc-800 pt-5 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
               <div>
-                <h4 className="text-lg sm:text-xl font-bold text-white">
-                  {testimonials[currentIndex].name}
+                <h4
+                  className="text-lg text-white sm:text-xl"
+                  style={{ fontFamily: "'Fraunces', serif", fontWeight: 600 }}
+                >
+                  {active.name}
                 </h4>
-                <span className="text-amber-400 text-xs sm:text-sm font-medium">
-                  {testimonials[currentIndex].role}
+                <span className="text-xs font-medium text-[#C68A4E] sm:text-sm">
+                  {active.role}
                 </span>
               </div>
-              <span className="text-[10px] sm:text-xs text-zinc-500 font-mono">
+              <span className="font-mono text-[10px] text-zinc-500 sm:text-xs">
                 Verified Customer #{currentIndex + 1}
               </span>
             </div>
+
+            {/* pour-timer — fills over the autoplay interval, pauses on hover */}
+            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/5">
+              <div
+                key={`bar-${currentIndex}`}
+                className={`pour-bar h-full bg-[#C68A4E] ${paused ? "paused" : ""}`}
+              />
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 sm:mt-8">
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 sm:mt-8 sm:flex-row">
             <div className="flex items-center gap-2">
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 ${
+                  onClick={() =>
+                    goTo(idx, idx > currentIndex ? "next" : "prev")
+                  }
+                  className={`h-2 rounded-full transition-all duration-300 sm:h-2.5 ${
                     idx === currentIndex
-                      ? "w-6 sm:w-8 bg-amber-500"
-                      : "w-2 sm:w-2.5 bg-zinc-700 hover:bg-zinc-500"
+                      ? "w-6 bg-[#C68A4E] sm:w-8"
+                      : "w-2 bg-zinc-700 hover:bg-zinc-500 sm:w-2.5"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -79,17 +216,17 @@ const Testimonials = () => {
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={prevSlide}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-zinc-700 bg-[#161512] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 bg-[#161512] text-white transition-all hover:border-[#C68A4E] hover:bg-[#C68A4E] hover:text-black sm:h-12 sm:w-12"
                 aria-label="Previous review"
               >
-                <FaChevronLeft />
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
               <button
                 onClick={nextSlide}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-zinc-700 bg-[#161512] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 bg-[#161512] text-white transition-all hover:border-[#C68A4E] hover:bg-[#C68A4E] hover:text-black sm:h-12 sm:w-12"
                 aria-label="Next review"
               >
-                <FaChevronRight />
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </div>
           </div>

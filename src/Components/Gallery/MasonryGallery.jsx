@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import useReveal from "../../Hooks/UseReveal";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import image1 from "../../assets/images/gallery/masonry-1.webp";
 import image2 from "../../assets/images/gallery/masonry-2.webp";
@@ -10,177 +10,291 @@ import image6 from "../../assets/images/gallery/masonry-6.webp";
 import image7 from "../../assets/images/gallery/masonry-7.webp";
 import image8 from "../../assets/images/gallery/masonry-8.webp";
 
+/* ------------------------------------------------------------------
+   Coffee-bean palette:
+   espresso-950 #0D0A08   wall background
+   espresso-900 #1A140F   surfaces
+   bean-tan     #A9744A   accent / tape
+   bean-tan-lt  #C79868   accent text-on-dark
+   mat cream    #F3EAD9   photo mat (the print itself)
+   ink          #2A2018   text on cream
+   taupe-400    #A89985   muted body text
+   display: 'Fraunces'   body: 'Manrope'
+------------------------------------------------------------------- */
+
+const FONT_IMPORT =
+  "@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap');";
+
 const gallery = [
-  { id: 1, image: image1, height: "h-72", label: "Espresso Shot" },
-  { id: 2, image: image2, height: "h-96", label: "Latte Art" },
-  { id: 3, image: image3, height: "h-80", label: "Coffee Beans" },
-  { id: 4, image: image4, height: "h-[28rem]", label: "Café Vibes" },
-  { id: 5, image: image5, height: "h-72", label: "Pour Over" },
-  { id: 6, image: image6, height: "h-96", label: "Cappuccino" },
-  { id: 7, image: image7, height: "h-80", label: "Roastery" },
-  { id: 8, image: image8, height: "h-[28rem]", label: "Morning Brew" },
+  { id: 1, image: image1, aspect: "aspect-[4/5]", label: "Espresso Shot" },
+  { id: 2, image: image2, aspect: "aspect-[3/4]", label: "Latte Art" },
+  { id: 3, image: image3, aspect: "aspect-square", label: "Coffee Beans" },
+  { id: 4, image: image4, aspect: "aspect-[4/5]", label: "Café Vibes" },
+  { id: 5, image: image5, aspect: "aspect-square", label: "Pour Over" },
+  { id: 6, image: image6, aspect: "aspect-[3/4]", label: "Cappuccino" },
+  { id: 7, image: image7, aspect: "aspect-[4/5]", label: "Roastery" },
+  { id: 8, image: image8, aspect: "aspect-square", label: "Morning Brew" },
 ];
 
-const GalleryItem = ({ item, index }) => {
-  const itemRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+// deterministic slight tilt per card, alternating — never random per render
+const TILTS = [-3, 2, -2, 3, -2.5, 1.5, -1.5, 2.5];
+
+function useInView(threshold = 0.15) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold },
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
+function PhotoCard({ item, index, inView, onOpen }) {
+  const [loaded, setLoaded] = useState(false);
+  const tilt = TILTS[index % TILTS.length];
+
+  return (
+    <button
+      onClick={() => onOpen(index)}
+      className="group relative block text-left focus:outline-none"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView
+          ? `translateY(0) rotate(${tilt}deg) scale(1)`
+          : "translateY(30px) rotate(0deg) scale(0.94)",
+        transition:
+          "opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.22,1,0.36,1)",
+        transitionDelay: inView ? `${index * 80}ms` : "0ms",
+      }}
+    >
+      <div className="relative rounded-sm bg-[#F3EAD9] p-3 pb-10 shadow-lg shadow-black/40 transition-all duration-400 ease-out group-hover:-translate-y-2 group-hover:rotate-0 group-hover:shadow-2xl group-hover:shadow-[#A9744A]/20 group-focus-visible:-translate-y-2 group-focus-visible:rotate-0">
+        {/* washi tape pin */}
+        <span
+          className="absolute -top-3 left-1/2 h-6 w-14 -translate-x-1/2 bg-[#A9744A]/70"
+          style={{ transform: "translateX(-50%) rotate(-4deg)" }}
+        />
+
+        <div className={`relative ${item.aspect} overflow-hidden bg-[#1A140F]`}>
+          <div
+            className={`absolute inset-0 bg-[#1A140F] transition-opacity duration-500 ${
+              loaded ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <img
+            src={item.image}
+            alt={item.label}
+            loading="lazy"
+            onLoad={() => setLoaded(true)}
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          />
+
+          <div className="absolute inset-0 flex items-center justify-center bg-[#0D0A08]/0 opacity-0 transition-all duration-300 group-hover:bg-[#0D0A08]/25 group-hover:opacity-100">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F3EAD9]/90 text-[#2A2018] scale-75 transition-transform duration-300 group-hover:scale-100">
+              <ZoomIn size={16} />
+            </span>
+          </div>
+        </div>
+
+        {/* caption, printed under the photo like a real mat */}
+        <p
+          className="absolute bottom-3 left-3 right-3 truncate text-sm text-[#2A2018]"
+          style={{
+            fontFamily: "'Fraunces', serif",
+            fontWeight: 500,
+            fontStyle: "italic",
+          }}
+        >
+          {item.label}
+        </p>
+      </div>
+    </button>
+  );
+}
+
+function Lightbox({ index, onClose, onPrev, onNext }) {
+  const item = gallery[index];
 
   useEffect(() => {
-    const el = itemRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      {
-        threshold: 0.05,
-        rootMargin: "0px 0px -30px 0px",
-      },
-    );
-
-    observer.observe(el);
-
-    // Immediate check — agar element already viewport mein hai
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setIsVisible(true);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+    document.body.style.overflow = "hidden";
+    const handleKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [onClose, onPrev, onNext]);
 
   return (
     <div
-      ref={itemRef}
-      className="gallery-item mb-4 sm:mb-5 md:mb-6 break-inside-avoid"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0A08]/95 p-4 backdrop-blur-sm"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
     >
-      <div
-        className={`
-          relative
-          overflow-hidden
-          rounded-2xl
-          sm:rounded-3xl
-          cursor-pointer
-          group
-          will-change-transform
-          transition-all
-          duration-700
-          ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
-          ${
-            isVisible
-              ? "opacity-100 translate-y-0 rotate-0 scale-100"
-              : "opacity-0 translate-y-16 rotate-2 scale-90"
-          }
-        `}
-        style={{
-          transitionDelay: `${index * 100}ms`,
-        }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+      <button
+        onClick={onClose}
+        className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#3A2E22] text-[#EFE3D0] transition hover:border-[#A9744A] hover:text-[#C79868]"
+        aria-label="Close"
       >
-        {/* Image */}
+        <X size={18} />
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onPrev();
+        }}
+        className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#3A2E22] text-[#EFE3D0] transition hover:border-[#A9744A] hover:text-[#C79868] sm:left-6"
+        aria-label="Previous image"
+      >
+        <ChevronLeft size={20} />
+      </button>
+
+      <div
+        className="flex max-h-[85vh] max-w-3xl flex-col items-center"
+        onClick={(e) => e.stopPropagation()}
+      >
         <img
+          key={item.id}
           src={item.image}
           alt={item.label}
-          loading="lazy"
-          className={`
-            w-full
-            ${item.height}
-            object-cover
-            transition-all
-            duration-700
-            ease-out
-            ${isHovered ? "scale-110 brightness-75" : "scale-100 brightness-100"}
-          `}
+          className="max-h-[70vh] w-auto rounded-sm object-contain shadow-2xl"
+          style={{ animation: "lightboxIn 0.35s ease-out" }}
         />
-
-        {/* Overlay Content */}
-        <div
-          className={`
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-black/90
-            via-black/20
-            to-transparent
-            flex
-            flex-col
-            justify-end
-            p-5
-            sm:p-6
-            transition-all
-            duration-500
-            ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-          `}
-        >
-          <span className="text-amber-400 text-[10px] sm:text-xs uppercase tracking-[3px] font-semibold mb-1">
-            {String(index + 1).padStart(2, "0")}
+        <div className="mt-4 flex items-center gap-3 text-[#EFE3D0]">
+          <span className="text-xs font-semibold uppercase tracking-[3px] text-[#C79868]">
+            {String(index + 1).padStart(2, "0")} /{" "}
+            {String(gallery.length).padStart(2, "0")}
           </span>
-          <h3 className="text-white text-lg sm:text-xl font-bold">
+          <span className="h-1 w-1 rounded-full bg-[#3A2E22]" />
+          <span style={{ fontFamily: "'Fraunces', serif", fontWeight: 500 }}>
             {item.label}
-          </h3>
+          </span>
         </div>
-
-        {/* Corner Amber Accent */}
-        <div
-          className={`
-            absolute
-            top-0
-            right-0
-            w-14
-            h-14
-            sm:w-16
-            sm:h-16
-            bg-gradient-to-bl
-            from-amber-500/90
-            to-transparent
-            transition-all
-            duration-500
-            origin-top-right
-            ${isHovered ? "opacity-100 scale-100" : "opacity-0 scale-0"}
-          `}
-          style={{
-            clipPath: "polygon(100% 0, 0 0, 100% 100%)",
-          }}
-        />
       </div>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onNext();
+        }}
+        className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#3A2E22] text-[#EFE3D0] transition hover:border-[#A9744A] hover:text-[#C79868] sm:right-6"
+        aria-label="Next image"
+      >
+        <ChevronRight size={20} />
+      </button>
     </div>
   );
-};
+}
 
 const MasonryGallery = () => {
-  useReveal(".masonry-gallery");
+  const [headingRef, headingInView] = useInView(0.3);
+  const [gridRef, gridInView] = useInView(0.05);
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const close = useCallback(() => setOpenIndex(null), []);
+  const prev = useCallback(
+    () => setOpenIndex((i) => (i - 1 + gallery.length) % gallery.length),
+    [],
+  );
+  const next = useCallback(
+    () => setOpenIndex((i) => (i + 1) % gallery.length),
+    [],
+  );
 
   return (
-    <section className="masonry-gallery py-16 sm:py-20 md:py-24 bg-[#181715]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="masonry-gallery relative overflow-hidden bg-[#0D0A08] py-16 sm:py-20 md:py-24">
+      <style>{`
+        ${FONT_IMPORT}
+        .masonry-gallery { font-family: 'Manrope', sans-serif; }
+        @keyframes lightboxIn {
+          from { opacity: 0; transform: scale(0.96); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .masonry-gallery * { transition: none !important; animation: none !important; }
+        }
+      `}</style>
+
+      {/* faint corkboard-style dot texture instead of a flat glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #A9744A 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[320px] w-[560px] -translate-x-1/2 rounded-full bg-[#A9744A]/[0.08] blur-[110px]"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <span className="uppercase tracking-[3px] sm:tracking-[4px] lg:tracking-[5px] text-amber-500 text-xs sm:text-sm font-semibold">
+        <div
+          ref={headingRef}
+          className="mb-14 text-center transition-all duration-700 ease-out sm:mb-16 md:mb-20"
+          style={{
+            opacity: headingInView ? 1 : 0,
+            transform: headingInView ? "translateY(0)" : "translateY(20px)",
+          }}
+        >
+          <span className="text-xs font-semibold uppercase tracking-[3px] text-[#C79868] sm:tracking-[4px] lg:tracking-[5px]">
             Gallery Collection
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 sm:mt-4 text-white leading-tight">
+          <h2
+            className="mt-3 text-3xl leading-tight text-[#EFE3D0] sm:mt-4 sm:text-4xl md:text-5xl"
+            style={{ fontFamily: "'Fraunces', serif", fontWeight: 600 }}
+          >
             Crafted With Passion
           </h2>
-          <p className="mt-4 sm:mt-6 max-w-2xl mx-auto text-zinc-400 leading-relaxed sm:leading-8 text-sm sm:text-base px-2 sm:px-0">
-            Explore our premium coffee moments, handcrafted drinks, cozy cafés
-            and unforgettable experiences.
+          <p className="mx-auto mt-4 max-w-2xl px-2 text-sm leading-relaxed text-[#A89985] sm:mt-6 sm:px-0 sm:text-base sm:leading-8">
+            Moments from the café wall — click any print to look closer.
           </p>
         </div>
 
-        {/* Masonry Grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 sm:gap-5 md:gap-6">
+        {/* Pinboard grid */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 sm:gap-y-16 lg:grid-cols-4"
+        >
           {gallery.map((item, index) => (
-            <GalleryItem key={item.id} item={item} index={index} />
+            <PhotoCard
+              key={item.id}
+              item={item}
+              index={index}
+              inView={gridInView}
+              onOpen={setOpenIndex}
+            />
           ))}
         </div>
       </div>
+
+      {openIndex !== null && (
+        <Lightbox
+          index={openIndex}
+          onClose={close}
+          onPrev={prev}
+          onNext={next}
+        />
+      )}
     </section>
   );
 };
