@@ -21,16 +21,16 @@ const useReveal = (selector, deps = []) => {
         targets.forEach((el) => {
           gsap.fromTo(
             el,
-            { opacity: 1, y: 35 },
+            { opacity: 0, y: 28 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.8,
+              duration: 0.75,
               ease: "power3.out",
               clearProps: "opacity,transform",
               scrollTrigger: {
                 trigger: el,
-                start: "top 90%",
+                start: "top 88%",
                 toggleActions: "play none none none",
                 once: true,
                 invalidateOnRefresh: true,

@@ -1,25 +1,20 @@
 /** @format */
 
 @import "tailwindcss";
-/* @import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
- */
-
-@import "tailwindcss";
 
 :root {
-	--background: #0f0e0d;
-	--surface: #181715;
-	--card: #22201e;
+	--background: #0a0908;
+	--surface: #141210;
+	--card: #1c1a17;
 
-	--text: #f5f1ea;
-	--muted: #b8b0a5;
+	--text: #f5efe6;
+	--muted: #b8aba0;
 
 	--coffee: #6f4e37;
-	--espresso: #3b2418;
-	--cream: #e6d2b5;
-	--gold: #c89b3c;
+	--espresso: #2e170d;
+	--cream: #f4ede1;
+	--gold: #d4a359;
+	--gold-bright: #f0c37b;
 
 	--radius: 16px;
 }
@@ -47,10 +42,12 @@ html {
 }
 
 body {
-	background: #0f0e0d;
-	color: #f5f1ea;
+	background: #0a0908;
+	color: #f5efe6;
 	overflow-x: hidden;
 	min-width: 320px;
+	font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+	-webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -59,7 +56,7 @@ video {
 	height: auto;
 }
 
-/* Shared responsive layout utilities */
+/* Shared responsive layout container */
 .page-container {
 	max-width: 80rem;
 	margin-left: auto;
@@ -84,21 +81,14 @@ video {
 }
 
 .section-y {
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	padding-top: 3.5rem;
+	padding-bottom: 3.5rem;
 }
 
 @media (min-width: 640px) {
 	.section-y {
-		padding-top: 4rem;
-		padding-bottom: 4rem;
-	}
-}
-
-@media (min-width: 768px) {
-	.section-y {
-		padding-top: 5rem;
-		padding-bottom: 5rem;
+		padding-top: 4.5rem;
+		padding-bottom: 4.5rem;
 	}
 }
 
@@ -109,29 +99,41 @@ video {
 	}
 }
 
+/* Custom cursor support on desktop only */
 @media (min-width: 768px) {
 	body {
+		cursor: none;
+	}
+
+	a,
+	button,
+	[role="button"],
+	input,
+	select,
+	textarea,
+	label {
 		cursor: none;
 	}
 }
 
 ::selection {
-	background: #c89b3c;
+	background: #d4a359;
 	color: #000;
 }
 
-.hero-title {
-	overflow: hidden;
+/* Glassmorphic luxury card */
+.glass-card {
+	background: rgba(20, 18, 16, 0.75);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.hero-title .char {
-	display: inline-block;
-	transform-origin: bottom;
-	will-change: transform;
+.gold-glow {
+	box-shadow: 0 0 35px -5px rgba(212, 163, 89, 0.18);
 }
 
-/* ---------------- Steam ---------------- */
-
+/* Ambient steam keyframes */
 .steam {
 	width: 8px;
 	height: 70px;
@@ -142,9 +144,7 @@ video {
 		rgba(255, 255, 255, 0),
 		rgba(255, 255, 255, 0.6)
 	);
-
 	filter: blur(6px);
-
 	animation: steam 3s infinite ease-in-out;
 }
 
@@ -161,57 +161,16 @@ video {
 		transform: translateY(0) scale(0.7);
 		opacity: 0;
 	}
-
 	30% {
 		opacity: 0.7;
 	}
-
 	100% {
 		transform: translateY(-70px) scale(1.3);
 		opacity: 0;
 	}
 }
 
-/* Glow Animation */
-
-.hero-glow {
-	animation: glowPulse 4s infinite ease-in-out;
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: scale(1.03);
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-@keyframes glowPulse {
-	0%,
-	100% {
-		transform: scale(1);
-	}
-
-	50% {
-		transform: scale(1.15);
-	}
-}
-
-@media (min-width: 768px) {
-	a,
-	button,
-	[role="button"],
-	input,
-	select,
-	textarea,
-	label {
-		cursor: none;
-	}
-}
-
+/* Utility scrollbar hiding */
 .scrollbar-hide {
 	-ms-overflow-style: none;
 	scrollbar-width: none;

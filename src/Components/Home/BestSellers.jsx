@@ -14,18 +14,18 @@ const BestSellers = () => {
   useStaggerReveal(".best-sellers", ".seller-card");
 
   return (
-    <section className="best-sellers py-28 bg-[#0F0E0D] relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/8 blur-[120px] rounded-full pointer-events-none" />
+    <section className="best-sellers py-16 sm:py-20 md:py-28 bg-[#0A0908] relative overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-amber-500/8 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-semibold mb-5">
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-semibold mb-4 sm:mb-5">
             <FaFire />
             Top Picks
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold">Customer Favorites</h2>
-          <p className="text-zinc-400 mt-4 max-w-lg mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">Customer Favorites</h2>
+          <p className="text-zinc-400 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base max-w-lg mx-auto">
             Our most loved handcrafted coffees — tried, tested, and adored by
             thousands.
           </p>
@@ -33,33 +33,33 @@ const BestSellers = () => {
 
         <div className="grid lg:grid-cols-5 gap-6">
           {/* Featured — spans 3 cols */}
-          <div className="seller-card lg:col-span-3 group relative rounded-3xl overflow-hidden bg-[#181715] border border-zinc-800 hover:border-amber-500/40 transition-all duration-500">
+          <div className="seller-card lg:col-span-3 group relative rounded-3xl overflow-hidden bg-[#141210] border border-white/[0.08] hover:border-amber-500/40 transition-all duration-500 shadow-xl">
             <div className="grid md:grid-cols-2 h-full">
               {/* Image side */}
-              <div className="relative overflow-hidden min-h-[280px] md:min-h-0">
+              <div className="relative overflow-hidden min-h-[240px] sm:min-h-[280px] md:min-h-0">
                 <img
                   src={featured.image}
                   alt={featured.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#181715]/80 hidden md:block" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#181715] to-transparent md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#141210]/80 hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141210] to-transparent md:hidden" />
 
-                <span className="absolute top-5 left-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500 text-black text-xs font-bold">
+                <span className="absolute top-4 sm:top-5 left-4 sm:left-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500 text-black text-xs font-bold shadow-md">
                   <FaFire size={10} />
                   #1 Best Seller
                 </span>
               </div>
 
               {/* Info side */}
-              <div className="p-8 flex flex-col justify-center">
-                <p className="text-amber-500 text-sm font-semibold uppercase tracking-wider">
+              <div className="p-5 sm:p-7 md:p-8 flex flex-col justify-center">
+                <p className="text-amber-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">
                   Featured Pick
                 </p>
-                <h3 className="text-3xl md:text-4xl font-bold mt-2 leading-tight">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 leading-tight text-white">
                   {featured.title}
                 </h3>
-                <p className="text-zinc-400 mt-4 leading-relaxed">
+                <p className="text-zinc-400 mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed">
                   {featured.description}
                 </p>
 
@@ -165,7 +165,7 @@ const BestSellers = () => {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-2 shrink-0">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     onClick={() =>
                       addToCart(
@@ -182,14 +182,14 @@ const BestSellers = () => {
                         1,
                       )
                     }
-                    className="w-9 h-9 rounded-full bg-amber-500 text-black flex items-center justify-center hover:bg-amber-400 transition opacity-0 group-hover:opacity-100"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-amber-500 text-black flex items-center justify-center hover:bg-amber-400 transition opacity-100 sm:opacity-0 sm:group-hover:opacity-100 shadow-sm"
                     aria-label="Add to cart"
                   >
-                    <FaShoppingCart size={12} />
+                    <FaShoppingCart size={11} />
                   </button>
                   <Link
                     to={`/product/${item.id}`}
-                    className="text-xs font-semibold text-zinc-400 hover:text-amber-500 transition whitespace-nowrap"
+                    className="text-xs font-semibold text-zinc-400 hover:text-amber-500 transition whitespace-nowrap hidden xs:inline"
                   >
                     View →
                   </Link>
@@ -200,9 +200,9 @@ const BestSellers = () => {
             {/* CTA */}
             <Link
               to="/shop"
-              className="mt-2 flex items-center justify-center gap-2 py-4 rounded-2xl border border-dashed border-zinc-700 text-zinc-400 hover:border-amber-500 hover:text-amber-500 transition text-sm font-semibold"
+              className="mt-2 flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-2xl border border-dashed border-zinc-700 hover:border-amber-500 text-zinc-400 hover:text-amber-400 transition text-xs sm:text-sm font-semibold bg-white/[0.02]"
             >
-              View All Products →
+              View All Specialty Products →
             </Link>
           </div>
         </div>
