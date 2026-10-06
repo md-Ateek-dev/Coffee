@@ -51,7 +51,7 @@ const BrandStory = () => {
   return (
     <section
       ref={sectionRef}
-      className="brand-story py-16 sm:py-20 md:py-24 lg:py-28 bg-[#0F0E0D] overflow-hidden"
+      className="brand-story py-16 sm:py-20 md:py-24 lg:py-28 bg-[#431602] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">

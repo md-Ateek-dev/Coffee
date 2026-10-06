@@ -141,7 +141,7 @@ function Lightbox({ index, onClose, onPrev, onNext }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D0A08]/95 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#0F0E0D]/95 p-4 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -218,7 +218,7 @@ const MasonryGallery = () => {
   );
 
   return (
-    <section className="masonry-gallery relative overflow-hidden bg-[#0D0A08] py-16 sm:py-20 md:py-24">
+    <section className="masonry-gallery relative overflow-hidden bg-[#431602] py-16 sm:py-20 md:py-24">
       <style>{`
         ${FONT_IMPORT}
         .masonry-gallery { font-family: 'Manrope', sans-serif; }
@@ -243,7 +243,7 @@ const MasonryGallery = () => {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[320px] w-[560px] -translate-x-1/2 rounded-full bg-[#A9744A]/[0.08] blur-[110px]"
+        // className="pointer-events-none absolute left-1/2 top-0 h-[320px] w-[560px] -translate-x-1/2 rounded-full bg-[#351101] blur-[110px]"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">

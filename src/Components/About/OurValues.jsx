@@ -9,6 +9,7 @@ import {
 
 import useReveal from "../../Hooks/UseReveal";
 import useStaggerReveal from "../../Hooks/useStaggerReveal";
+import coffeeBg from "../../assets/images/banner3.jpg";
 
 const values = [
   {
@@ -60,7 +61,7 @@ const OurValues = () => {
   useStaggerReveal(".our-values", ".value-card");
 
   return (
-    <section className="our-values py-24 bg-[#0F0E0D]">
+    <section className="our-values py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -71,7 +72,9 @@ const OurValues = () => {
             What Defines Aura Coffee
           </h2>
           <p className="mt-4 text-zinc-300 leading-8 text-base">
-            These guiding principles inspire every decision we make—from selecting micro-lot beans to creating memorable experiences for our guests.
+            These guiding principles inspire every decision we make—from
+            selecting micro-lot beans to creating memorable experiences for our
+            guests.
           </p>
         </div>
 
@@ -83,17 +86,16 @@ const OurValues = () => {
               className="
                 value-card
                 group
-                bg-[#1a1815]
+                bg-[#431602]
                 border
-                border-zinc-700/70
+                border-zinc-white
                 rounded-3xl
                 p-8
                 transition-all
                 duration-500
                 hover:-translate-y-2
-                hover:border-amber-500
-                hover:shadow-xl
-                hover:shadow-amber-500/10
+                hover:border-white
+                hover:shadow-[0_0_20px_rgba(255,255,255,1)]
               "
             >
               <div

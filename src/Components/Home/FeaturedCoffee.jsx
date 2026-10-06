@@ -38,7 +38,7 @@ const FeaturedCoffee = () => {
   }, [isAutoRotating, total]);
 
   return (
-    <section className="featured py-24 bg-[#0F0E0D] relative overflow-hidden">
+    <section className="featured py-24 bg-[#431602] relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -53,7 +53,8 @@ const FeaturedCoffee = () => {
               Crafted For Every Taste
             </h2>
             <p className="text-zinc-400 mt-3 max-w-xl text-base">
-              Discover our signature coffee collection rotating seamlessly in 3D. Click any card to bring it to center.
+              Discover our signature coffee collection rotating seamlessly in
+              3D. Click any card to bring it to center.
             </p>
           </div>
 
@@ -65,7 +66,9 @@ const FeaturedCoffee = () => {
                   ? "bg-amber-500/20 text-amber-400 border-amber-500/50"
                   : "bg-[#161513] text-zinc-400"
               }`}
-              title={isAutoRotating ? "Pause Auto Rotation" : "Start Auto Rotation"}
+              title={
+                isAutoRotating ? "Pause Auto Rotation" : "Start Auto Rotation"
+              }
             >
               {isAutoRotating ? <FaPause size={14} /> : <FaPlay size={14} />}
             </button>
@@ -108,7 +111,9 @@ const FeaturedCoffee = () => {
             const rotateY = offset * -28;
             const translateX = offset * 220;
             const translateZ = -absOffset * 180;
-            const scale = isCenter ? 1.05 : Math.max(0.72, 1 - absOffset * 0.15);
+            const scale = isCenter
+              ? 1.05
+              : Math.max(0.72, 1 - absOffset * 0.15);
             const opacity = isCenter ? 1 : Math.max(0.4, 1 - absOffset * 0.35);
             const zIndex = 30 - absOffset * 10;
 

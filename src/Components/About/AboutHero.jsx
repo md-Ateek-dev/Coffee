@@ -14,7 +14,7 @@ const AboutHero = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/55" />
+      {/* <div className="absolute inset-0 bg-black/55" /> */}
       <div className="absolute top-16 sm:top-24 left-8 sm:left-24 w-48 sm:w-80 h-48 sm:h-80 rounded-full bg-amber-500/20 blur-[130px] pointer-events-none" />
 
       <div className="relative z-10 page-container">

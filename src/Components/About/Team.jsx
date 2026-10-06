@@ -1,92 +1,111 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
+import disha_patani from "../../assets/images/about/disha.png";
+import salman_khan from "../../assets/images/about/salman.png";
+import sharukh_khan from "../../assets/images/about/shahrukh.png";
+import sofia_ansari from "../../assets/images/about/sofia.png";
+import sonam_bajwa from "../../assets/images/about/sonam.png";
+import carry_minati from "../../assets/images/about/carry.png";
 
 // ---- Rotary Roast palette (from the design brief) ----
 const COLORS = {
-  bg: "zinc-900", // background of the section
-  surface: "#211B16",
-  primary: "#E8A64B", // active border / glow
-  secondary: "#C77D30",
-  textOnPhoto: "#F5EDE4",
+  bg: "#431602",
+  surface: "431602",
+  primary: "#11111",
+  secondary: "#0F0E0D",
+  textOnPhoto: "#11111",
 };
 
 const team = [
   {
     id: 1,
-    name: "James Carter",
+    name: "Disha Patani",
     role: "Head Barista & Roaster",
-    img: "https://i.pravatar.cc/500?img=12",
+    img: disha_patani,
   },
   {
     id: 2,
-    name: "Sophia Miller",
+    name: "Salman Khan",
     role: "Master Cupper & Blender",
-    img: "https://i.pravatar.cc/500?img=47",
+    img: salman_khan,
   },
   {
     id: 3,
-    name: "Daniel Wilson",
+    name: "Shah Rukh Khan",
     role: "Bean Sourcing Director",
-    img: "https://i.pravatar.cc/500?img=14",
+    img: sharukh_khan,
   },
   {
     id: 4,
-    name: "Emma Johnson",
+    name: "Sofia Ansari",
     role: "Café Experience Manager",
-    img: "https://i.pravatar.cc/500?img=45",
+    img: sofia_ansari,
   },
   {
     id: 5,
-    name: "Oliver Vance",
+    name: "Sonam Bajwa",
     role: "Executive Pastry Chef",
-    img: "https://i.pravatar.cc/500?img=51",
+    img: sonam_bajwa,
   },
   {
     id: 6,
     name: "Mia Roberts",
     role: "Quality Control Specialist",
-    img: "https://i.pravatar.cc/500?img=32",
+    img: disha_patani,
   },
   {
     id: 7,
-    name: "Ethan Davis",
+    name: "Carry Minati",
     role: "Latte Art Champion",
-    img: "https://i.pravatar.cc/500?img=15",
+    img: carry_minati,
   },
   {
     id: 8,
     name: "Chloe Bennet",
     role: "Sensory & Cupping Lead",
-    img: "https://i.pravatar.cc/500?img=48",
+    img: sofia_ansari,
   },
 ];
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false);
+
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     setReduced(mq.matches);
+
     const listener = (e) => setReduced(e.matches);
+
     mq.addEventListener("change", listener);
+
     return () => mq.removeEventListener("change", listener);
   }, []);
+
   return reduced;
 }
 
 export default function RotaryRoastTeam() {
   const total = team.length;
   const angleStep = 360 / total;
-  const radius = 460; // bigger radius = flatter, gentler curve (per brief)
+
+  const radius = 460;
 
   const [activeIndex, setActiveIndex] = useState(0);
+
   const isHovering = useRef(false);
+
   const reducedMotion = usePrefersReducedMotion();
 
   const next = useCallback(
     () => setActiveIndex((p) => (p + 1) % total),
     [total],
   );
+
   const prev = useCallback(
     () => setActiveIndex((p) => (p - 1 + total) % total),
     [total],
@@ -96,6 +115,7 @@ export default function RotaryRoastTeam() {
     const timer = setInterval(() => {
       if (!isHovering.current) next();
     }, 3800);
+
     return () => clearInterval(timer);
   }, [next]);
 
@@ -107,6 +127,7 @@ export default function RotaryRoastTeam() {
       style={{ backgroundColor: COLORS.bg }}
     >
       {/* Ambient glows */}
+
       <div
         className="absolute top-0 left-1/4 rounded-full pointer-events-none"
         style={{
@@ -116,6 +137,7 @@ export default function RotaryRoastTeam() {
           filter: "blur(140px)",
         }}
       />
+
       <div
         className="absolute bottom-0 right-0 rounded-full pointer-events-none"
         style={{
@@ -128,19 +150,25 @@ export default function RotaryRoastTeam() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
+
         <div className="text-center mb-14">
           <span
             className="uppercase font-semibold text-xs"
-            style={{ color: COLORS.primary, letterSpacing: "5px" }}
+            style={{
+              color: COLORS.primary,
+              letterSpacing: "5px",
+            }}
           >
             Meet Our Team
           </span>
+
           <h2
             className="text-3xl sm:text-4xl font-bold mt-2"
             style={{ color: COLORS.textOnPhoto }}
           >
             Passion Behind Every Cup
           </h2>
+
           <p
             className="mt-3 max-w-xl mx-auto text-sm sm:text-base"
             style={{ color: "#C9BFB4" }}
@@ -176,13 +204,24 @@ export default function RotaryRoastTeam() {
             >
               {team.map((member, index) => {
                 const cardAngle = index * angleStep;
+
                 let diff = index - activeIndex;
-                if (diff > total / 2) diff -= total;
-                if (diff < -total / 2) diff += total;
+
+                if (diff > total / 2) {
+                  diff -= total;
+                }
+
+                if (diff < -total / 2) {
+                  diff += total;
+                }
+
                 const isActive = diff === 0;
+
                 const opacity =
                   Math.abs(diff) <= 2 ? 1 - Math.abs(diff) * 0.28 : 0;
+
                 const scale = isActive ? 1 : 0.82;
+
                 const dimmed = opacity < 0.4;
 
                 return (
@@ -203,7 +242,11 @@ export default function RotaryRoastTeam() {
                       className="rounded-3xl overflow-hidden transition-all duration-500"
                       style={{
                         backgroundColor: COLORS.surface,
-                        border: `1px solid ${isActive ? COLORS.primary : "#3A332C"}`,
+
+                        border: `1px solid ${
+                          isActive ? COLORS.primary : "#FFFFFF"
+                        }`,
+
                         boxShadow: isActive
                           ? `0 20px 40px ${COLORS.primary}40`
                           : "none",
@@ -214,28 +257,30 @@ export default function RotaryRoastTeam() {
                           src={member.img}
                           alt={member.name}
                           loading="lazy"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-bottom bg-cover bg-center"
                         />
-                        {/* Text only rendered on the active card — keeps side cards legible-safe */}
+
+                        {/* Text only rendered on active card */}
+
                         {isActive && (
                           <>
-                            <div
-                              className="absolute inset-0"
-                              style={{
-                                background:
-                                  "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.1) 55%, transparent)",
-                              }}
-                            />
+                            <div className="absolute inset-0" />
+
                             <div className="absolute bottom-0 left-0 w-full p-4">
                               <h3
-                                className="text-base sm:text-lg font-bold leading-tight"
-                                style={{ color: COLORS.textOnPhoto }}
+                                className="text-base text-black sm:text-lg font-bold leading-tight"
+                                style={{
+                                  color: COLORS.textOnPhoto,
+                                }}
                               >
                                 {member.name}
                               </h3>
+
                               <p
-                                className="mt-0.5 font-semibold text-xs"
-                                style={{ color: COLORS.primary }}
+                                className="mt-0.5 text-black font-semibold text-xs"
+                                style={{
+                                  color: COLORS.primary,
+                                }}
                               >
                                 {member.role}
                               </p>
@@ -243,6 +288,8 @@ export default function RotaryRoastTeam() {
                           </>
                         )}
                       </div>
+
+                      {/* SOCIAL ICONS */}
 
                       {isActive && (
                         <div className="flex gap-2 justify-center py-4">
@@ -252,9 +299,13 @@ export default function RotaryRoastTeam() {
                                 key={i}
                                 className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus-visible:outline focus-visible:outline-2"
                                 style={{
-                                  backgroundColor: "#171310",
+                                  /* Changed to section background */
+                                  backgroundColor: COLORS.bg,
+
                                   color: "#C9BFB4",
-                                  border: "1px solid #3A332C",
+
+                                  border: "1px solid #FFFFFF",
+
                                   outlineColor: COLORS.primary,
                                 }}
                                 aria-label={`${member.name} social link`}
@@ -273,7 +324,9 @@ export default function RotaryRoastTeam() {
           </div>
         )}
 
+
         {/* Controls + Dots */}
+
         <div className="flex items-center justify-center gap-6 mt-10">
           <NavButton onClick={prev} label="Previous team member">
             <ChevronLeft size={16} />
@@ -289,9 +342,11 @@ export default function RotaryRoastTeam() {
                 className="h-2 rounded-full transition-all duration-500 focus-visible:outline focus-visible:outline-2"
                 style={{
                   width: i === activeIndex ? 32 : 8,
-                  backgroundColor:
-                    i === activeIndex ? COLORS.primary : "#4A4139",
-                  outlineColor: COLORS.primary,
+
+                  // All dots white
+                  backgroundColor: "#FFFFFF",
+
+                  outlineColor: "#FFFFFF",
                 }}
               />
             ))}
@@ -315,7 +370,7 @@ function NavButton({ onClick, label, children }) {
       style={{
         backgroundColor: COLORS.surface,
         color: COLORS.textOnPhoto,
-        border: "1px solid #3A332C",
+        border: "1px solid #FFFFFF",
         outlineColor: COLORS.primary,
       }}
     >
@@ -324,12 +379,13 @@ function NavButton({ onClick, label, children }) {
   );
 }
 
-// Static, fully-legible fallback for prefers-reduced-motion: no 3D transform at all.
+// Static, fully-legible fallback for prefers-reduced-motion
 function ReducedMotionGrid({ team, activeIndex, onPick }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
       {team.map((member, i) => {
         const isActive = i === activeIndex;
+
         return (
           <button
             key={member.id}
@@ -337,8 +393,11 @@ function ReducedMotionGrid({ team, activeIndex, onPick }) {
             className="text-left rounded-3xl overflow-hidden transition-all duration-300 focus-visible:outline focus-visible:outline-2"
             style={{
               backgroundColor: COLORS.surface,
+
               border: `1px solid ${isActive ? COLORS.primary : "#3A332C"}`,
+
               boxShadow: isActive ? `0 12px 28px ${COLORS.primary}33` : "none",
+
               outlineColor: COLORS.primary,
             }}
           >
@@ -349,16 +408,22 @@ function ReducedMotionGrid({ team, activeIndex, onPick }) {
                 className="w-full h-full object-cover"
               />
             </div>
+
             <div className="p-3">
               <h3
                 className="text-sm font-bold leading-tight"
-                style={{ color: COLORS.textOnPhoto }}
+                style={{
+                  color: COLORS.textOnPhoto,
+                }}
               >
                 {member.name}
               </h3>
+
               <p
                 className="mt-0.5 font-semibold text-[11px]"
-                style={{ color: COLORS.primary }}
+                style={{
+                  color: COLORS.primary,
+                }}
               >
                 {member.role}
               </p>

@@ -40,7 +40,7 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
   if (!total) return null;
 
   return (
-    <section className="shop-3d-showcase py-20 bg-[#0A0908] relative overflow-hidden border-t border-b border-zinc-800/80 my-8">
+    <section className="shop-3d-showcase py-20 bg-[#431602] relative overflow-hidden border-t border-b border-zinc-800/80 my-8">
       {/* Background Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
 
@@ -49,13 +49,18 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">
-              <FaSyncAlt className="animate-spin text-[10px]" style={{ animationDuration: "12s" }} /> 3D Rotating Showcase
+              <FaSyncAlt
+                className="animate-spin text-[10px]"
+                style={{ animationDuration: "12s" }}
+              />{" "}
+              3D Rotating Showcase
             </span>
             <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
               Our Coffee Collection
             </h2>
             <p className="text-zinc-400 mt-2 max-w-xl text-sm md:text-base">
-              Discover our signature artisanal roasts rotating seamlessly in 3D. Click any card to bring it to center.
+              Discover our signature artisanal roasts rotating seamlessly in 3D.
+              Click any card to bring it to center.
             </p>
           </div>
 
@@ -66,9 +71,11 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
               className={`w-11 h-11 rounded-full border border-zinc-700/80 text-white flex items-center justify-center transition-all shadow-md ${
                 isAutoRotating
                   ? "bg-amber-500/20 text-amber-400 border-amber-500/50"
-                  : "bg-[#161513] text-zinc-400"
+                  : "bg-[#431602] text-zinc-400"
               }`}
-              title={isAutoRotating ? "Pause Auto Rotation" : "Start Auto Rotation"}
+              title={
+                isAutoRotating ? "Pause Auto Rotation" : "Start Auto Rotation"
+              }
             >
               {isAutoRotating ? <FaPause size={12} /> : <FaPlay size={12} />}
             </button>
@@ -115,7 +122,9 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
             const rotateY = offset * -28; // 3D rotation angle
             const translateX = offset * 220; // X displacement
             const translateZ = -absOffset * 180; // Z depth displacement
-            const scale = isCenter ? 1.05 : Math.max(0.72, 1 - absOffset * 0.15);
+            const scale = isCenter
+              ? 1.05
+              : Math.max(0.72, 1 - absOffset * 0.15);
             const opacity = isCenter ? 1 : Math.max(0.4, 1 - absOffset * 0.35);
             const zIndex = 30 - absOffset * 10;
 

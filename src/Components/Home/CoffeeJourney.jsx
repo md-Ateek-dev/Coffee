@@ -46,7 +46,7 @@ const processSteps = [
 
 const CoffeeJourney = () => {
   return (
-    <section className="bg-[#0D0C0B] py-20 border-y border-zinc-800/60">
+    <section className="bg-[#431602] py-20 border-y border-zinc-800/60">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-14">
@@ -70,7 +70,7 @@ const CoffeeJourney = () => {
           {processSteps.map((step) => (
             <div
               key={step.id}
-              className="bg-[#161513] rounded-2xl p-6 border border-zinc-800 hover:border-amber-500 transition-all duration-300 shadow-xl group"
+              className="bg-[#431602] rounded-2xl p-6 border border-white/10 hover:border-amber-500 transition-all duration-300 shadow-xl group"
             >
               {/* Header */}
               <div className="flex items-center justify-between">
@@ -78,7 +78,7 @@ const CoffeeJourney = () => {
                   {step.icon}
                 </div>
 
-                <span className="text-3xl font-bold text-zinc-700 group-hover:text-amber-500/40 transition-colors">
+                <span className="text-3xl font-bold text-white group-hover:text-amber-500/90 transition-colors">
                   {step.id}
                 </span>
               </div>

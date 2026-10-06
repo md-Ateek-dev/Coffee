@@ -14,7 +14,7 @@ const MenuSection = ({
   useReveal(`.${sectionClass}`);
   useStaggerReveal(`.${sectionClass}`, ".coffee-card");
 
-  const bgClass = variant === "alt" ? "bg-[#181715]" : "bg-[#0F0E0D]";
+  const bgClass = variant === "alt" ? "bg-[#431602]" : "bg-[#431602]";
 
   return (
     <section
@@ -53,4 +53,3 @@ const MenuSection = ({
 };
 
 export default MenuSection;
-

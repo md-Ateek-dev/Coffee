@@ -122,7 +122,7 @@ const BlogGrid = () => {
   }, []);
 
   return (
-    <section className="blog-grid py-24 bg-[#0F0E0D]">
+    <section className="blog-grid py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header with Navigation Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -143,14 +143,14 @@ const BlogGrid = () => {
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <button
               onClick={scrollLeft}
-              className="w-12 h-12 rounded-full border border-zinc-700 bg-[#1a1815] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-lg"
+              className="w-12 h-12 rounded-full border border-white bg-[#431602] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-lg"
               aria-label="Previous Article"
             >
               <FaChevronLeft size={16} />
             </button>
             <button
               onClick={scrollRight}
-              className="w-12 h-12 rounded-full border border-zinc-700 bg-[#1a1815] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-lg"
+              className="w-12 h-12 rounded-full border border-white bg-[#431602] text-white flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all shadow-lg"
               aria-label="Next Article"
             >
               <FaChevronRight size={16} />
@@ -177,13 +177,12 @@ const BlogGrid = () => {
                 overflow-hidden
                 rounded-3xl
                 border
-                border-zinc-700/70
-                bg-[#1a1815]
+                border-white
+                bg-[#431602]
                 transition-all
                 duration-500
-                hover:border-amber-500
-                hover:shadow-xl
-                hover:shadow-amber-500/10
+                hover:border-white
+               hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]
                 group
                 flex
                 flex-col

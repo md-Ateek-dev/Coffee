@@ -70,7 +70,7 @@ const Testimonials = () => {
   return (
     <section
       ref={sectionRef}
-      className="testimonials h-screen section-y relative overflow-hidden border-t border-zinc-800 bg-[#120F0C] text-zinc-300"
+      className="testimonials h-screen section-y relative overflow-hidden border-t border-zinc-800 bg-[#431602] text-zinc-300"
     >
       <style>{`
         ${FONT_IMPORT}
@@ -110,7 +110,7 @@ const Testimonials = () => {
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-24 h-[380px] w-[560px] -translate-x-1/2 rounded-full opacity-[0.10] blur-[110px]"
-        style={{ background: "#C68A4E" }}
+        style={{ background: "#0F0E0D" }}
       />
 
       <div className="page-container relative z-10">
@@ -143,7 +143,7 @@ const Testimonials = () => {
         >
           <div
             key={currentIndex}
-            className={`relative overflow-hidden rounded-2xl border border-zinc-700/60 bg-[#1C1712] p-6 shadow-2xl shadow-black/80 sm:rounded-3xl sm:p-8 md:p-12 ${
+            className={`relative overflow-hidden rounded-2xl border border-zinc-700/60 bg-[#431602] p-6 shadow-2xl shadow-black/80 sm:rounded-3xl sm:p-8 md:p-12 ${
               direction === "next" ? "slide-next" : "slide-prev"
             }`}
           >

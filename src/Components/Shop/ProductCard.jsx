@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="group rounded-3xl bg-[#181715] overflow-hidden border border-white/10 hover:border-amber-500 transition duration-300">
-
+    <div className="group rounded-3xl bg-[#431602] overflow-hidden border border-white/10 hover:border-amber-500 transition duration-300">
       <div className="overflow-hidden">
         <img
           src={product.image}
@@ -13,20 +12,12 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="p-6">
+        <span className="text-sm text-amber-500">{product.category}</span>
 
-        <span className="text-sm text-amber-500">
-          {product.category}
-        </span>
-
-        <h3 className="text-2xl font-semibold mt-2">
-          {product.name}
-        </h3>
+        <h3 className="text-2xl font-semibold mt-2">{product.name}</h3>
 
         <div className="flex items-center justify-between mt-6">
-
-          <p className="text-xl font-bold">
-            {product.price}
-          </p>
+          <p className="text-xl font-bold">{product.price}</p>
 
           <Link
             to={`/product/${product.id}`}
@@ -34,11 +25,8 @@ const ProductCard = ({ product }) => {
           >
             View Details
           </Link>
-
         </div>
-
       </div>
-
     </div>
   );
 };

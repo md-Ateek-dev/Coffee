@@ -1,9 +1,4 @@
-import {
-  FaCoffee,
-  FaUsers,
-  FaGlobe,
-  FaAward,
-} from "react-icons/fa";
+import { FaCoffee, FaUsers, FaGlobe, FaAward } from "react-icons/fa";
 
 import Counter from "../../Animation/Counter";
 import useReveal from "../../Hooks/UseReveal";
@@ -49,7 +44,7 @@ const Stats = () => {
   useStaggerReveal(".stats", ".stat-card");
 
   return (
-    <section className="stats py-24 bg-[#0F0E0D] border-t border-zinc-800">
+    <section className="stats py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -60,7 +55,8 @@ const Stats = () => {
             Coffee By The Numbers
           </h2>
           <p className="mt-4 text-zinc-300 leading-8 text-base">
-            Every number reflects our commitment to sustainable sourcing, master roasting, and total guest delight.
+            Every number reflects our commitment to sustainable sourcing, master
+            roasting, and total guest delight.
           </p>
         </div>
 
@@ -73,17 +69,15 @@ const Stats = () => {
                 stat-card
                 group
                 rounded-3xl
-                bg-[#1a1815]
+                bg-[#431602]
                 border
-                border-zinc-700/70
+                border-white
                 p-8
                 text-center
                 transition-all
                 duration-500
                 hover:-translate-y-2
-                hover:border-amber-500
-                hover:shadow-xl
-                hover:shadow-amber-500/10
+hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]
               "
             >
               <div

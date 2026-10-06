@@ -111,7 +111,7 @@ const ProductGrid = ({
   };
 
   return (
-    <section className="shop-grid-section py-10 sm:py-12 md:py-16 lg:py-24 bg-[#0F0E0D] relative overflow-hidden">
+    <section className="shop-grid-section py-10 sm:py-12 md:py-16 lg:py-24 bg-[#431602] relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[150px] sm:h-[200px] md:h-[300px] bg-amber-500/5 blur-[80px] sm:blur-[100px] rounded-full pointer-events-none" />
 
       <div className="page-container relative z-10 px-4 sm:px-6">

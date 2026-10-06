@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaCamera, FaChevronLeft, FaChevronRight, FaTimes, FaExpand } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaCamera,
+  FaChevronLeft,
+  FaChevronRight,
+  FaTimes,
+  FaExpand,
+} from "react-icons/fa";
 import { useHorizontalScroll } from "../../Hooks/useHorizontalScroll";
 
 import coffee1 from "../../assets/images/gallery/coffee-1.webp";
@@ -40,14 +47,16 @@ const coffeeMoments = [
   {
     id: 5,
     title: "Artisan Cold Brew",
-    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=800&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=800&auto=format&fit=crop",
     category: "Cold Brew",
     desc: "Slow drip 18-hour cold steeping for exceptionally smooth notes.",
   },
   {
     id: 6,
     title: "Fresh Baked Pastries",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
     category: "Bakery",
     desc: "Buttery, flaky pastries baked fresh every morning at dawn.",
   },
@@ -56,18 +65,13 @@ const coffeeMoments = [
 const CoffeeMoments = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const {
-    sectionRef,
-    trackRef,
-    currentIndex,
-    scrollNext,
-    scrollPrev,
-  } = useHorizontalScroll({ extraHeight: 0.7 });
+  const { sectionRef, trackRef, currentIndex, scrollNext, scrollPrev } =
+    useHorizontalScroll({ extraHeight: 0.7 });
 
   return (
     <section
       ref={sectionRef}
-      className="coffee-moments-horizontal relative bg-[#0B0A09] overflow-hidden border-t border-b border-zinc-800/60"
+      className="coffee-moments-horizontal relative bg-[#0F0E0D] overflow-hidden border-t border-b border-zinc-800/60"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-between py-6 relative">
         {/* Heading */}
@@ -232,9 +236,7 @@ const CoffeeMoments = () => {
               <h3 className="text-2xl font-bold text-white mt-1">
                 {selectedImage.title}
               </h3>
-              <p className="text-zinc-400 mt-2 text-sm">
-                {selectedImage.desc}
-              </p>
+              <p className="text-zinc-400 mt-2 text-sm">{selectedImage.desc}</p>
             </div>
           </div>
         </div>

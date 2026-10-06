@@ -4,9 +4,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
     <section className="py-10">
       <div className="max-w-7xl mx-auto px-6">
-
         <div className="relative max-w-2xl mx-auto">
-
           {/* Search Icon */}
 
           <FaSearch
@@ -23,7 +21,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="
               w-full
-              bg-[#181715]
+              bg-[#431602]
               border border-zinc-700
               rounded-full
               py-4
@@ -58,7 +56,6 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
               <FaTimes size={18} />
             </button>
           )}
-
         </div>
       </div>
     </section>

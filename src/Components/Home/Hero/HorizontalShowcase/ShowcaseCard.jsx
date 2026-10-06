@@ -6,10 +6,10 @@ const ShowcaseCard = ({ product }) => {
   return (
     <motion.div
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
-      className="group relative w-[270px] sm:w-[320px] md:w-[350px] bg-[#141210] rounded-2xl overflow-hidden border border-white/[0.08] hover:border-amber-500/50 transition-colors duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between shrink-0 select-none"
+      className="group relative w-[270px] sm:w-[320px] md:w-[350px] bg-[#431602] rounded-2xl overflow-hidden border border-white hover:border-amber-500/50 transition-colors duration-300 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between shrink-0 select-none"
     >
       {/* Top Image Container */}
-      <div className="relative overflow-hidden aspect-[16/10] bg-[#0c0b0a]">
+      <div className="relative overflow-hidden aspect-[16/10] bg-[#431602]">
         <img
           src={product.image}
           alt={product.name || product.title}

@@ -1,4 +1,10 @@
-import { FaStar, FaCheckCircle, FaAward, FaCoffee, FaHeart } from "react-icons/fa";
+import {
+  FaStar,
+  FaCheckCircle,
+  FaAward,
+  FaCoffee,
+  FaHeart,
+} from "react-icons/fa";
 import useReveal from "../../Hooks/UseReveal";
 
 const reviewStats = [
@@ -15,7 +21,8 @@ const customerReviews = [
     badge: "Verified Connoisseur",
     rating: 5,
     title: "Unrivaled Roast Quality!",
-    review: "The Signature Espresso blend has redefined my morning routine. The rich crema and hints of dark chocolate are sheer perfection.",
+    review:
+      "The Signature Espresso blend has redefined my morning routine. The rich crema and hints of dark chocolate are sheer perfection.",
     product: "Signature Espresso",
   },
   {
@@ -24,7 +31,8 @@ const customerReviews = [
     badge: "Home Barista",
     rating: 5,
     title: "Phenomenal Nitro Cold Brew",
-    review: "Incredible cascading texture and smooth natural sweetness without any bitterness. Easily the best specialty coffee service.",
+    review:
+      "Incredible cascading texture and smooth natural sweetness without any bitterness. Easily the best specialty coffee service.",
     product: "Nitro Cold Brew",
   },
   {
@@ -33,7 +41,8 @@ const customerReviews = [
     badge: "Coffee Enthusiast",
     rating: 5,
     title: "Smooth & Delightful Velvet Latte",
-    review: "Every single cup is roasted with passion. The subscription service brings fresh beans to my door right on schedule.",
+    review:
+      "Every single cup is roasted with passion. The subscription service brings fresh beans to my door right on schedule.",
     product: "Velvet Latte",
   },
 ];
@@ -42,7 +51,7 @@ const ProductReviewsShowcase = () => {
   useReveal(".reviews-showcase");
 
   return (
-    <section className="reviews-showcase py-24 bg-[#0B0A0A] border-t border-zinc-800">
+    <section className="reviews-showcase py-24 bg-[#431602] ">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -53,14 +62,15 @@ const ProductReviewsShowcase = () => {
             Audited & Rated by Coffee Lovers
           </h2>
           <p className="mt-4 text-zinc-300 leading-8 text-base">
-            We hold our beans to the highest sensory standards. Here is how our community rates our craftsmanship.
+            We hold our beans to the highest sensory standards. Here is how our
+            community rates our craftsmanship.
           </p>
         </div>
 
         {/* Top Summary Banner */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {/* Rating Big Card */}
-          <div className="bg-[#1a1815] border border-zinc-700/70 rounded-3xl p-8 text-center flex flex-col justify-center items-center">
+          <div className="bg-[#431602] border border-white rounded-3xl p-8 text-center flex flex-col justify-center items-center">
             <div className="w-20 h-20 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-4xl mb-4 border border-amber-500/30">
               <FaAward />
             </div>
@@ -73,12 +83,15 @@ const ProductReviewsShowcase = () => {
               ))}
             </div>
             <p className="text-zinc-300 font-medium text-sm">
-              Based on over <strong className="text-white">12,500+ verified customer reviews</strong>
+              Based on over{" "}
+              <strong className="text-white">
+                12,500+ verified customer reviews
+              </strong>
             </p>
           </div>
 
           {/* Meter Breakdown Bars */}
-          <div className="lg:col-span-2 bg-[#1a1815] border border-zinc-700/70 rounded-3xl p-8 flex flex-col justify-center">
+          <div className="lg:col-span-2 bg-[#431602] border border-white rounded-3xl p-8 flex flex-col justify-center">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <FaCoffee className="text-amber-500" />
               Sensory Evaluation Scores
@@ -88,7 +101,9 @@ const ProductReviewsShowcase = () => {
                 <div key={idx}>
                   <div className="flex justify-between text-sm font-semibold mb-2">
                     <span className="text-zinc-200">{stat.label}</span>
-                    <span className="text-amber-400 font-bold">{stat.score}%</span>
+                    <span className="text-amber-400 font-bold">
+                      {stat.score}%
+                    </span>
                   </div>
                   <div className="w-full bg-zinc-800 rounded-full h-3 overflow-hidden">
                     <div
@@ -108,14 +123,13 @@ const ProductReviewsShowcase = () => {
             <div
               key={item.id}
               className="
-                bg-[#1a1815]
+                bg-[#431602]
                 border
-                border-zinc-700/70
+                border-white
                 rounded-3xl
                 p-8
-                hover:border-amber-500
-                hover:shadow-xl
-                hover:shadow-amber-500/10
+                hover:border-white
+                hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]
                 transition-all
                 duration-300
                 flex

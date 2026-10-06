@@ -6,7 +6,7 @@ const OfferBanner = () => {
   useReveal(".offer-banner");
 
   return (
-    <section className="offer-banner py-14 sm:py-16 md:py-20 lg:py-24 bg-[#0F0E0D] border-t border-zinc-800/40">
+    <section className="offer-banner py-14 sm:py-16 md:py-20 lg:py-24 bg-[#431602]">
       <div className="page-container">
         <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[40px] border border-amber-500/20 shadow-2xl">
           <img
@@ -15,7 +15,7 @@ const OfferBanner = () => {
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-black/30" />
           <div className="absolute -top-16 sm:-top-24 -right-10 sm:-right-20 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-amber-500/20 blur-[120px]" />
 
           <div className="relative z-10 px-5 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20 text-center">
@@ -29,7 +29,7 @@ const OfferBanner = () => {
               On Signature Coffee
             </h2>
 
-            <p className="text-zinc-300 mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed sm:leading-8 text-sm sm:text-base md:text-lg font-light px-2">
+            <p className="text-white mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed sm:leading-8 text-sm sm:text-base md:text-lg font-medium px-2">
               Enjoy handcrafted beverages prepared with premium beans. Available
               only this weekend. Don&apos;t miss your perfect cup.
             </p>
@@ -56,4 +56,3 @@ const OfferBanner = () => {
 };
 
 export default OfferBanner;
-

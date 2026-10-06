@@ -49,7 +49,7 @@ export default function CoffeeProcess() {
   useStaggerReveal(".process-section", ".process-card", 0.12);
 
   return (
-    <section className="process-section py-24 bg-[#181715] text-white">
+    <section className="process-section py-24 bg-[#431602] text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="uppercase tracking-[5px] text-amber-500">
@@ -78,7 +78,7 @@ export default function CoffeeProcess() {
                    C20 840 100 960 60 1080
                    C20 1200 100 1320 60 1440
                    C20 1560 100 1680 60 1800"
-                stroke="#52525b"
+                stroke="white"
                 strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
@@ -102,9 +102,9 @@ export default function CoffeeProcess() {
                 <div
                   className={`hidden lg:block absolute top-1/2 ${
                     index % 2 ? "-left-10" : "-right-10"
-                  } w-10 h-[3px] bg-zinc-600`}
+                  } w-10 h-[3px] bg-white`}
                 />
-                <div className="process-card bg-[#22201E] border border-zinc-800 rounded-3xl p-8 hover:border-amber-500 transition-all duration-300">
+                <div className="process-card bg-[#431602] border border-white rounded-3xl hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] p-8 hover:border-white transition-all duration-300">
                   <div className="w-16 h-16 rounded-full bg-amber-500 text-black flex items-center justify-center text-2xl">
                     {step.icon}
                   </div>

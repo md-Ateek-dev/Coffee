@@ -14,8 +14,8 @@ const BestSellers = () => {
   useStaggerReveal(".best-sellers", ".seller-card");
 
   return (
-    <section className="best-sellers py-16 sm:py-20 md:py-28 bg-[#0A0908] relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-amber-500/8 blur-[120px] rounded-full pointer-events-none" />
+    <section className="best-sellers py-16 sm:py-20 md:py-28 bg-[#431602] relative overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-80 sm:w-96 h-80 sm:h-96 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Heading */}
@@ -24,7 +24,9 @@ const BestSellers = () => {
             <FaFire />
             Top Picks
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">Customer Favorites</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            Customer Favorites
+          </h2>
           <p className="text-zinc-400 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base max-w-lg mx-auto">
             Our most loved handcrafted coffees — tried, tested, and adored by
             thousands.
@@ -33,7 +35,7 @@ const BestSellers = () => {
 
         <div className="grid lg:grid-cols-5 gap-6">
           {/* Featured — spans 3 cols */}
-          <div className="seller-card lg:col-span-3 group relative rounded-3xl overflow-hidden bg-[#141210] border border-white/[0.08] hover:border-amber-500/40 transition-all duration-500 shadow-xl">
+          <div className="seller-card lg:col-span-3 group relative rounded-3xl overflow-hidden bg-[#4E220F] border border-white hover:border-amber-500/40 transition-all duration-500 shadow-xl">
             <div className="grid md:grid-cols-2 h-full">
               {/* Image side */}
               <div className="relative overflow-hidden min-h-[240px] sm:min-h-[280px] md:min-h-0">
@@ -42,10 +44,10 @@ const BestSellers = () => {
                   alt={featured.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#141210]/80 hidden md:block" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141210] to-transparent md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#4E220F] hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#4E220F] to-transparent md:hidden" />
 
-                <span className="absolute top-4 sm:top-5 left-4 sm:left-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500 text-black text-xs font-bold shadow-md">
+                <span className="absolute top-4 sm:top-5 left-4 sm:left-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#4E220F] text-white text-xs font-bold shadow-md">
                   <FaFire size={10} />
                   #1 Best Seller
                 </span>
@@ -135,10 +137,10 @@ const BestSellers = () => {
             {others.map((item, index) => (
               <div
                 key={item.id}
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-[#181715] border border-zinc-800 hover:border-amber-500/40 transition-all duration-300 hover:-translate-x-1"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-[#431602] border border-white hover:border-amber-500/40 transition-all duration-300 hover:-translate-x-1"
               >
                 {/* Rank */}
-                <span className="w-8 h-8 rounded-full bg-zinc-800 text-zinc-400 text-sm font-bold flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-black transition">
+                <span className="w-8 h-8 rounded-full bg-[#0F0E0D] text-zinc-400 text-sm font-bold flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-black transition">
                   {index + 2}
                 </span>
 
@@ -200,7 +202,7 @@ const BestSellers = () => {
             {/* CTA */}
             <Link
               to="/shop"
-              className="mt-2 flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-2xl border border-dashed border-zinc-700 hover:border-amber-500 text-zinc-400 hover:text-amber-400 transition text-xs sm:text-sm font-semibold bg-white/[0.02]"
+              className="mt-2 flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-2xl border border-dashed border-white hover:border-amber-500 text-white hover:text-amber-400 transition text-xs sm:text-sm font-semibold bg-white[0.02] hover:bg-white/[0.04]"
             >
               View All Specialty Products →
             </Link>

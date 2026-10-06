@@ -38,7 +38,7 @@ const CoffeeFarm = () => {
   useStaggerReveal(".coffee-farm", ".farm-card");
 
   return (
-    <section className="coffee-farm py-24 bg-[#181715]">
+    <section className="coffee-farm py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
@@ -62,7 +62,8 @@ const CoffeeFarm = () => {
               {features.map((item) => (
                 <div
                   key={item.id}
-                  className="farm-card bg-[#22201E] rounded-2xl p-6 border border-zinc-800 hover:border-amber-500 transition-all duration-300"
+                  className="farm-card bg-[#431602]  hover:shadow-[0_0_20px_rgba(255,255,255,1)]
+               rounded-2xl p-6 border border-white hover:border-white transition-all duration-300"
                 >
                   <div className="w-14 h-14 rounded-full bg-amber-500 text-black flex items-center justify-center text-2xl">
                     {item.icon}

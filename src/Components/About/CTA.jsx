@@ -6,8 +6,8 @@ const CTA = () => {
   useReveal(".about-cta");
 
   return (
-    <section className="about-cta py-24 bg-gradient-to-br from-[#1c1a17] to-[#0f0e0d] relative overflow-hidden border-t border-zinc-800">
-      <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="about-cta py-24 bg-[#431602] relative overflow-hidden">
+      <div className="absolute -right-20 -bottom-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
         <span className="uppercase tracking-[5px] text-amber-500 text-sm font-semibold">
           Visit Our House
@@ -16,7 +16,8 @@ const CTA = () => {
           Ready for an Unforgettable Coffee Experience?
         </h2>
         <p className="text-zinc-400 text-lg max-w-2xl mx-auto mb-10 leading-8">
-          Step into our cafe or order online to savor freshly roasted single-origin beans delivered straight to your doorstep.
+          Step into our cafe or order online to savor freshly roasted
+          single-origin beans delivered straight to your doorstep.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

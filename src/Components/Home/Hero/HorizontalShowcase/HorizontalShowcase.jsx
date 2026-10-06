@@ -10,7 +10,7 @@ const HorizontalShowcase = () => {
   return (
     <section
       ref={sectionRef}
-      className="horizontal-section relative bg-[#0B0A09] overflow-hidden border-t border-b border-zinc-800/60"
+      className="horizontal-section relative bg-[#431602] overflow-hidden border-t border-b border-zinc-800/60"
     >
       {/* Sticky Fullscreen Container */}
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-between py-6 relative">
@@ -86,7 +86,7 @@ const HorizontalShowcase = () => {
           <button
             onClick={scrollNext}
             disabled={currentIndex >= products.length - 1}
-            className="w-9 h-9 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+            className="w-9 h-9 rounded-full bg-[#431602] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
             aria-label="Next Coffee"
           >
             <FaChevronRight size={14} />

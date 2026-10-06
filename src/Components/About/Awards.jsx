@@ -1,6 +1,6 @@
 import { FaTrophy, FaMedal, FaStar, FaAward } from "react-icons/fa";
 import useReveal from "../../Hooks/UseReveal";
-
+import Award_bg from "../../assets/images/banner3.jpg";
 const awardsData = [
   {
     id: 1,
@@ -8,7 +8,8 @@ const awardsData = [
     title: "Best Specialty Coffee Roaster",
     organization: "Global Coffee Association",
     icon: <FaTrophy className="text-amber-500 text-3xl" />,
-    description: "Awarded for exceptional bean selection, sustainable farming partnerships, and roasting precision.",
+    description:
+      "Awarded for exceptional bean selection, sustainable farming partnerships, and roasting precision.",
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ const awardsData = [
     title: "Gold Barista Excellence",
     organization: "World Coffee Championship",
     icon: <FaMedal className="text-amber-500 text-3xl" />,
-    description: "Recognized for artisanal espresso craft, signature drink creation, and customer satisfaction.",
+    description:
+      "Recognized for artisanal espresso craft, signature drink creation, and customer satisfaction.",
   },
   {
     id: 3,
@@ -24,7 +26,8 @@ const awardsData = [
     title: "Eco-Friendly Business of the Year",
     organization: "Sustainable Roasters Guild",
     icon: <FaStar className="text-amber-500 text-3xl" />,
-    description: "Honored for 100% direct trade practices, biodegradable packaging, and carbon-neutral logistics.",
+    description:
+      "Honored for 100% direct trade practices, biodegradable packaging, and carbon-neutral logistics.",
   },
   {
     id: 4,
@@ -32,7 +35,8 @@ const awardsData = [
     title: "Top Coffee Lounge Experience",
     organization: "Culinary & Hospitality Design",
     icon: <FaAward className="text-amber-500 text-3xl" />,
-    description: "Celebrated for architectural beauty, immersive sensory ambiance, and warm hospitalities.",
+    description:
+      "Celebrated for architectural beauty, immersive sensory ambiance, and warm hospitalities.",
   },
 ];
 
@@ -40,7 +44,7 @@ const Awards = () => {
   useReveal(".awards-section");
 
   return (
-    <section className="awards-section py-24 bg-[#0F0E0D]">
+    <section className="awards-section py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="uppercase tracking-[5px] text-amber-500 text-sm font-semibold">
@@ -50,7 +54,8 @@ const Awards = () => {
             Awards & Accolades
           </h2>
           <p className="mt-6 text-zinc-400 leading-8">
-            Our passion for coffee craftsmanship has earned us national and international recognition over the years.
+            Our passion for coffee craftsmanship has earned us national and
+            international recognition over the years.
           </p>
         </div>
 
@@ -58,7 +63,7 @@ const Awards = () => {
           {awardsData.map((award) => (
             <div
               key={award.id}
-              className="bg-[#181715] border border-zinc-800 rounded-3xl p-8 hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-2"
+              className="bg-[#431602] hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] border border-white rounded-3xl p-8 hover:border-white transition-all duration-300 group hover:-translate-y-2"
             >
               <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {award.icon}

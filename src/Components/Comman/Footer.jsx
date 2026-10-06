@@ -152,7 +152,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#120F0C] text-zinc-300">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#431602] text-zinc-300">
       <style>{`
         ${FONT_IMPORT}
         footer { font-family: 'Manrope', sans-serif; }
@@ -179,7 +179,7 @@ const Footer = () => {
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-0 h-[360px] w-[560px] -translate-x-1/2 rounded-full opacity-[0.10] blur-[100px]"
-        style={{ background: "#C68A4E" }}
+        style={{ background: "#0F0E0D" }}
       />
 
       <div className="page-container relative py-12 sm:py-14 md:py-16">
@@ -325,13 +325,13 @@ const Footer = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="h-16 w-full rounded-full border border-zinc-700 bg-[#1C1712] px-6 text-base text-white outline-none transition-all duration-300 placeholder:text-zinc-500 focus:border-[#C68A4E] focus:ring-4 focus:ring-[#C68A4E]/15 sm:h-16 md:h-[70px]"
+              className="h-16 w-full rounded-full border border-white bg-[#431602] px-6 text-base text-white outline-none transition-all duration-300 placeholder:text-zinc-500 focus:border-[#C68A4E] focus:ring-4 focus:ring-[#C68A4E]/15 sm:h-16 md:h-[70px]"
             />
 
             <button
               type="submit"
               disabled={subscribed}
-              className="group relative h-14 w-full overflow-hidden rounded-full bg-[#C68A4E] px-8 font-semibold text-black transition-all duration-300 hover:bg-[#d6975a] active:scale-[0.97] disabled:cursor-default sm:h-14 sm:w-auto sm:min-w-[170px] md:h-16"
+              className="group relative h-14 w-full overflow-hidden rounded-full bg-[#f5a906] px-8 font-semibold text-black transition-all duration-300 hover:bg-[#f59905] active:scale-[0.97] disabled:cursor-default sm:h-14 sm:w-auto sm:min-w-[170px] md:h-16"
             >
               <span className="relative z-10 inline-flex items-center justify-center gap-2">
                 {subscribed ? (

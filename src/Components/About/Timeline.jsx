@@ -74,7 +74,7 @@ const Timeline = () => {
   return (
     <section
       ref={sectionRef}
-      className="timeline-horizontal relative bg-[#0B0A09] overflow-hidden border-t border-b border-zinc-800/60"
+      className="timeline-horizontal relative bg-[#431602] overflow-hidden border-t border-b border-zinc-800/60"
     >
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-between py-6 relative">
         {/* Header */}
@@ -89,7 +89,7 @@ const Timeline = () => {
           </div>
 
           {/* Controls & Counter */}
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
             <div className="hidden sm:block text-xs font-mono text-zinc-400 bg-zinc-900/90 px-3.5 py-1.5 rounded-full border border-zinc-800">
               <span className="text-amber-400 font-bold">
                 0{currentIndex + 1}
@@ -101,7 +101,7 @@ const Timeline = () => {
               <button
                 onClick={scrollPrev}
                 disabled={currentIndex === 0}
-                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                className="w-10 h-10 rounded-full bg-[#431602] border border-white text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
                 aria-label="Previous Milestone"
               >
                 <FaChevronLeft size={14} />
@@ -109,13 +109,13 @@ const Timeline = () => {
               <button
                 onClick={scrollNext}
                 disabled={currentIndex >= timelineEvents.length - 1}
-                className="w-10 h-10 rounded-full bg-[#181715] border border-zinc-700/80 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                className="w-10 h-10 rounded-full bg-[#431602] border border-white text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
                 aria-label="Next Milestone"
               >
                 <FaChevronRight size={14} />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Horizontal Track */}
@@ -127,7 +127,7 @@ const Timeline = () => {
             {timelineEvents.map((item, index) => (
               <div
                 key={item.id}
-                className="w-[280px] sm:w-[330px] md:w-[360px] bg-[#161513] rounded-2xl p-6 border border-zinc-800/90 hover:border-amber-500/80 transition-all duration-300 shadow-xl group shrink-0 flex flex-col justify-between"
+                className="w-[280px] sm:w-[330px] md:w-[360px] bg-[#431602] rounded-2xl p-6 border border-white hover:border-white transition-all duration-300 shadow-xl group shrink-0 flex flex-col justify-between"
               >
                 {/* Year Header */}
                 <div className="flex items-center justify-between">
@@ -145,7 +145,7 @@ const Timeline = () => {
                     </div>
                   </div>
 
-                  <span className="text-[10px] font-mono text-zinc-500 border border-zinc-800 px-2.5 py-0.5 rounded-full">
+                  <span className="text-[10px] font-mono text-yellow-400 border border-white px-2.5 py-0.5 rounded-full">
                     0{index + 1}
                   </span>
                 </div>

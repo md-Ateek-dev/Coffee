@@ -106,9 +106,9 @@ const VideoCard = ({ video, index, isVisible }) => {
         overflow-hidden
         rounded-2xl
         sm:rounded-3xl
-        bg-[#1a1815]
+        bg-[#431602]
         border
-        border-zinc-700/70
+        border-white
         hover:border-amber-500
         hover:shadow-2xl
         hover:shadow-amber-500/10
@@ -256,7 +256,7 @@ const VideoGallery = () => {
   }, []);
 
   return (
-    <section className="video-gallery py-12 sm:py-16 md:py-20 lg:py-24 bg-[#0F0E0D]">
+    <section className="video-gallery py-12 sm:py-16 md:py-20 lg:py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">

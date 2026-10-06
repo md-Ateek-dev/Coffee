@@ -3,18 +3,20 @@ import { FaShoppingBag } from "react-icons/fa";
 import useReveal from "../../Hooks/UseReveal";
 import LazyVideo from "../Comman/LazyVideo";
 import HeroVideo from "../../assets/videos/Gallery_Video4.mp4";
+import heroVideoWebm from "../../assets/videos/Coffee_Animation2.mp4";
 
 const ShopHero = () => {
   useReveal(".shop-hero");
 
   return (
-    <section className="shop-hero relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0F0E0D] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
+    <section className="shop-hero relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#431602] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
       <LazyVideo
-        src={HeroVideo}
+        src={heroVideoWebm}
+        webmSrc={heroVideoWebm}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/55" />
+      {/* <div className="absolute inset-0 bg-black/55" /> */}
       <div className="absolute top-16 sm:top-20 right-8 sm:right-20 w-56 sm:w-96 h-56 sm:h-96 bg-amber-500/20 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 text-center page-container max-w-4xl">

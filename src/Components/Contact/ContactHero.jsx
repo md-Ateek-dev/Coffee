@@ -14,7 +14,7 @@ const ContactHero = () => {
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/55 to-black/60" />
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/55 to-black/60" /> */}
       <div className="absolute left-8 sm:left-20 top-24 sm:top-32 h-48 sm:h-72 w-48 sm:w-72 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 page-container">

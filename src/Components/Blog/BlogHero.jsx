@@ -14,7 +14,7 @@ const BlogHero = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-black/55" />
+      {/* <div className="absolute inset-0 bg-black/55" /> */}
 
       <div className="relative z-10 page-container">
         <span className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-amber-500 text-black font-bold text-xs sm:text-sm mb-4 sm:mb-6 shadow-lg shadow-amber-500/20">

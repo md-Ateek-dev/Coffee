@@ -30,7 +30,7 @@ const OurStory = () => {
   useStaggerReveal(".our-story", ".story-card");
 
   return (
-    <section className="our-story section-y bg-[#181715]">
+    <section className="our-story section-y bg-[#431602]">
       <div className="page-container">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           <div className="relative">
@@ -60,16 +60,15 @@ const OurStory = () => {
 
             <p className="mt-5 sm:mt-8 text-zinc-400 leading-relaxed sm:leading-8 text-sm sm:text-base">
               Aura Coffee began with a simple mission—to serve coffee that
-              brings people together. Every bean is ethically sourced,
-              expertly roasted, and brewed to deliver an unforgettable
-              coffee experience.
+              brings people together. Every bean is ethically sourced, expertly
+              roasted, and brewed to deliver an unforgettable coffee experience.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
               {features.map((feature) => (
                 <div
                   key={feature.id}
-                  className="story-card bg-[#22201E] rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-zinc-800 hover:border-amber-500 transition-all duration-300"
+                  className="story-card bg-[#431602] rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-white hover:border-amber-500 transition-all duration-300"
                 >
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-500 text-black flex items-center justify-center text-xl sm:text-2xl">
                     {feature.icon}

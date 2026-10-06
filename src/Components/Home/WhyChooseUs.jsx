@@ -69,7 +69,7 @@ function useInView(threshold = 0.2) {
 function FeatureCard({ icon: Icon, title, description, delay, inView }) {
   return (
     <div
-      className="feature-card group relative rounded-[1.75rem] border border-white/[0.06] bg-[#1C1712] p-7 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[#C68A4E]/40 hover:bg-[#241C15]"
+      className="feature-card group relative rounded-[1.75rem] border border-white/[0.06] bg-[#431602] p-7 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[#3f1d0f]/40 hover:bg-[#2f0f01]"
       style={{
         transitionDelay: inView ? `${delay}ms` : "0ms",
         opacity: inView ? 1 : 0,
@@ -83,7 +83,7 @@ function FeatureCard({ icon: Icon, title, description, delay, inView }) {
         <span className="roast-ring absolute inset-0 rounded-full border border-dashed border-[#C68A4E]/35 transition-colors duration-500 group-hover:border-[#C68A4E]/70" />
         <span className="absolute inset-[6px] rounded-full bg-[#15120E] transition-colors duration-500 group-hover:bg-[#1a1510]" />
         <Icon
-          className="relative h-6 w-6 text-[#C68A4E] transition-transform duration-500 group-hover:scale-110"
+          className="relative h-6 w-6 text-[#c07123] transition-transform duration-500 group-hover:scale-110"
           strokeWidth={1.75}
         />
       </div>
@@ -99,7 +99,7 @@ function FeatureCard({ icon: Icon, title, description, delay, inView }) {
 
       {/* pour-line accent: fills left→right on hover */}
       <span className="absolute bottom-0 left-7 right-7 h-px overflow-hidden">
-        <span className="block h-full w-full origin-left scale-x-0 bg-gradient-to-r from-[#C68A4E] to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
+        <span className="block h-full w-full origin-left scale-x-0 bg-gradient-to-r from-[#d66f08] to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100" />
       </span>
     </div>
   );
@@ -154,7 +154,7 @@ const WhyChooseUs = () => {
   const [gridRef, gridInView] = useInView(0.15);
 
   return (
-    <section className="why-us relative overflow-hidden bg-[#120F0C] py-28">
+    <section className="why-us relative overflow-hidden bg-[#431602] py-28">
       <style>{`
         ${FONT_IMPORT}
 
@@ -183,7 +183,7 @@ const WhyChooseUs = () => {
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-40 h-[420px] w-[620px] -translate-x-1/2 rounded-full opacity-[0.14] blur-[110px]"
-        style={{ background: "#C68A4E" }}
+        style={{ background: "#0F0E0D" }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
@@ -249,8 +249,9 @@ const WhyChooseUs = () => {
           </div>
 
           {/* Center — cup replaces the flat product photo with a living illustration */}
+          {/* ye bhi color use kr skte h background me 790D16 5E0006 */}
           <div
-            className="flex justify-center rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#1a1510] to-[#120F0C] px-6 py-14 transition-all duration-700 ease-out lg:py-20"
+            className="flex justify-center rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-[#802802] to-[#2f0f01] px-6 py-14 transition-all duration-700 ease-out lg:py-20"
             style={{
               opacity: gridInView ? 1 : 0,
               transform: gridInView ? "scale(1)" : "scale(0.92)",

@@ -1,17 +1,11 @@
-const Pagination = ({
-  currentPage,
-  totalPages,
-  setCurrentPage,
-}) => {
+const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
   if (totalPages <= 1) return null;
 
   const pages = [...Array(totalPages).keys()].map((n) => n + 1);
 
   return (
-    <section className="pb-16 sm:pb-20 md:pb-24 px-4">
-
+    <section className="bg-[#431602] pb-16 sm:pb-20 md:pb-24 px-4">
       <div className="flex justify-center items-center gap-2 sm:gap-3 flex-wrap">
-
         {/* Previous */}
 
         <button
@@ -29,10 +23,10 @@ const Pagination = ({
             key={page}
             onClick={() => setCurrentPage(page)}
             className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full text-sm sm:text-base transition ${
-                currentPage === page
-                  ? "bg-amber-500 text-black font-bold"
-                  : "bg-[#181715] text-white hover:bg-amber-500 hover:text-black"
-              }`}
+              currentPage === page
+                ? "bg-amber-500 text-black font-bold"
+                : "bg-[#431602] text-white hover:bg-amber-500 hover:text-black"
+            }`}
           >
             {page}
           </button>
@@ -47,9 +41,7 @@ const Pagination = ({
         >
           Next
         </button>
-
       </div>
-
     </section>
   );
 };

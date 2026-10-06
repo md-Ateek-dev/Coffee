@@ -9,7 +9,7 @@ const ProductCard = ({ product, size = "default" }) => {
 
   return (
     <article
-      className={`coffee-card group relative flex flex-col h-full bg-[#181715] border border-zinc-800/80 overflow-hidden transition-all duration-500 hover:border-amber-500/40 hover:shadow-[0_16px_48px_rgba(201,155,60,0.1)] ${
+      className={`coffee-card group relative flex flex-col h-full bg-[#431602] border border-white overflow-hidden transition-all duration-500 hover:border-amber-500/40 hover:shadow-[0_16px_48px_rgba(201,155,60,0.1)] ${
         isMedium
           ? "rounded-xl sm:rounded-2xl hover:-translate-y-1"
           : "rounded-2xl sm:rounded-3xl hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(201,155,60,0.12)]"
@@ -59,7 +59,10 @@ const ProductCard = ({ product, size = "default" }) => {
             }`}
             aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           >
-            <FaHeart className={liked ? "fill-current" : ""} size={isMedium ? 11 : 13} />
+            <FaHeart
+              className={liked ? "fill-current" : ""}
+              size={isMedium ? 11 : 13}
+            />
           </button>
           <button
             onClick={() => addToCart(product, 1)}
@@ -75,12 +78,18 @@ const ProductCard = ({ product, size = "default" }) => {
         {/* Price on image */}
         <div
           className={`absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-end justify-between ${
-            isMedium ? "" : "bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4"
+            isMedium
+              ? ""
+              : "bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4"
           }`}
         >
           <div className="flex items-center gap-1 text-amber-400">
-            <FaStar className={isMedium ? "text-[10px]" : "text-xs sm:text-sm"} />
-            <span className={`font-semibold ${isMedium ? "text-[10px] sm:text-xs" : "text-xs sm:text-sm"}`}>
+            <FaStar
+              className={isMedium ? "text-[10px]" : "text-xs sm:text-sm"}
+            />
+            <span
+              className={`font-semibold ${isMedium ? "text-[10px] sm:text-xs" : "text-xs sm:text-sm"}`}
+            >
               {product.rating}
             </span>
           </div>
@@ -95,7 +104,9 @@ const ProductCard = ({ product, size = "default" }) => {
       </div>
 
       {/* Content */}
-      <div className={`flex flex-col flex-1 ${isMedium ? "p-3 sm:p-3.5" : "p-4 sm:p-5"}`}>
+      <div
+        className={`flex flex-col flex-1 ${isMedium ? "p-3 sm:p-3.5" : "p-4 sm:p-5"}`}
+      >
         <h3
           className={`font-bold leading-snug group-hover:text-amber-400 transition-colors line-clamp-2 ${
             isMedium ? "text-sm sm:text-base" : "text-base sm:text-lg"
@@ -106,7 +117,9 @@ const ProductCard = ({ product, size = "default" }) => {
 
         <p
           className={`text-zinc-500 leading-relaxed line-clamp-2 flex-1 ${
-            isMedium ? "mt-1 text-[11px] sm:text-xs" : "mt-1.5 sm:mt-2 text-xs sm:text-sm"
+            isMedium
+              ? "mt-1 text-[11px] sm:text-xs"
+              : "mt-1.5 sm:mt-2 text-xs sm:text-sm"
           }`}
         >
           {product.description}

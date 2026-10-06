@@ -16,7 +16,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="newsletter py-12 sm:py-16 md:py-20 lg:py-24 bg-[#0F0E0D]">
+    <section className="newsletter py-12 sm:py-16 md:py-20 lg:py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div
           className="
@@ -26,11 +26,8 @@ const Newsletter = () => {
             sm:rounded-[30px]
             lg:rounded-[40px]
             border
-            border-amber-500/20
-            bg-gradient-to-br
-            from-[#20170E]
-            via-[#18120D]
-            to-[#0F0E0D]
+            border-white
+            
             px-5
             py-12
             sm:px-8
@@ -41,8 +38,8 @@ const Newsletter = () => {
           "
         >
           {/* Background Blur */}
-          <div className="absolute -top-16 -left-10 h-48 w-48 sm:h-60 sm:w-60 md:h-72 md:w-72 rounded-full bg-amber-500/10 blur-3xl" />
-          <div className="absolute -bottom-16 -right-10 h-48 w-48 sm:h-60 sm:w-60 md:h-72 md:w-72 rounded-full bg-orange-500/10 blur-3xl" />
+          <div className="absolute -top-16 -left-10 h-48 w-48 sm:h-60 sm:w-60 md:h-72 md:w-72 rounded-full blur-3xl" />
+          <div className="absolute -bottom-16 -right-10 h-48 w-48 sm:h-60 sm:w-60 md:h-72 md:w-72 rounded-full blur-3xl" />
 
           <div className="relative z-10">
             {/* Heading */}
@@ -66,6 +63,7 @@ const Newsletter = () => {
             <form
               onSubmit={handleSubmit}
               className="
+              border-1
                 mx-auto
                 mt-8
                 sm:mt-10
@@ -78,7 +76,7 @@ const Newsletter = () => {
                 md:flex-row
                 md:gap-2
                 md:rounded-full
-                md:bg-[#181715]
+                md:bg-[#431602]
                 md:p-2
               "
             >
@@ -94,7 +92,7 @@ const Newsletter = () => {
                   py-4
                   rounded-2xl
                   sm:rounded-3xl
-                  bg-[#181715]
+                  bg-[#431602]
                   md:rounded-full
                   md:bg-transparent
                   md:px-5
