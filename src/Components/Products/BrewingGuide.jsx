@@ -72,7 +72,7 @@ const StepCard = ({ step, index, isVisible }) => {
 
       <div
         className={`
-          bg-[#1E1C1A]
+          bg-[#431602]
           border
           border-zinc-800
           rounded-2xl

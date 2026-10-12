@@ -8,14 +8,12 @@ const WishlistSection = () => {
   if (wishlist.length === 0) return null;
 
   return (
-    <section className="py-16 bg-[#181715] border-y border-zinc-800">
+    <section className="py-16 bg-[#431602] border-y border-zinc-800">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center gap-3 mb-8">
           <FaHeart className="text-red-400 fill-current text-xl" />
           <h2 className="text-2xl font-bold">Your Liked Products</h2>
-          <span className="text-sm text-zinc-500">
-            ({wishlist.length})
-          </span>
+          <span className="text-sm text-zinc-500">({wishlist.length})</span>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -30,8 +30,7 @@ const Loader = () => {
   if (!loading) return null;
 
   return (
-    <div className="loader-screen fixed inset-0 z-[99999] bg-[#0F0E0D] flex flex-col items-center justify-center">
-
+    <div className="loader-screen fixed inset-0 z-[99999] bg-[#431602] flex flex-col items-center justify-center">
       <h1 className="loader-logo text-5xl md:text-7xl font-bold tracking-wider text-white">
         AURA
       </h1>
@@ -41,11 +40,8 @@ const Loader = () => {
       </p>
 
       <div className="mt-12 w-72 h-[4px] bg-white/10 rounded-full overflow-hidden">
-
         <div className="loader-progress h-full w-0 bg-amber-500 rounded-full"></div>
-
       </div>
-
     </div>
   );
 };

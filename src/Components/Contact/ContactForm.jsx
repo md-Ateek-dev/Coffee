@@ -105,8 +105,8 @@ const ContactForm = () => {
 
       {/* Ambient background: gives the glass something to blur */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="contact-orb-a absolute -left-24 top-16 h-96 w-96 rounded-full bg-amber-500/20 blur-[120px]" />
-        <div className="contact-orb-b absolute -right-24 bottom-0 h-[30rem] w-[30rem] rounded-full bg-orange-700/20 blur-[140px]" />
+        <div className="contact-orb-a absolute -left-24 top-16 h-96 w-96 rounded-full bg-[#431602] blur-[120px]" />
+        <div className="contact-orb-b absolute -right-24 bottom-0 h-[30rem] w-[30rem] rounded-full bg-[#431602] blur-[140px]" />
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{

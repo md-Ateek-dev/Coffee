@@ -11,15 +11,13 @@ const MenuHero = () => {
   useStaggerReveal(containerRef, ".hero-reveal", 0.12);
 
   return (
-    <section className="menu-hero relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0F0E0D] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
+    <section className="menu-hero relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#431602] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
       {/* Background video */}
       <LazyVideo
         src={HeroVideo}
-        className="absolute inset-0 w-full h-full object-cover scale-105"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
 
-      {/* Overlays */}
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/35 to-[#0F0E0D]" /> */}
       <div className="absolute top-16 sm:top-20 left-8 sm:left-20 w-56 sm:w-96 h-56 sm:h-96 bg-amber-500/20 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
 

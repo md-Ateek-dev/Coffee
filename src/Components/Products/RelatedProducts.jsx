@@ -14,7 +14,7 @@ const RelatedProducts = () => {
   const likedProducts = wishlist.filter((item) => item.id !== currentId);
 
   return (
-    <section className="related-products py-16 sm:py-20 md:py-24 bg-[#0F0E0D]">
+    <section className="related-products py-16 sm:py-20 md:py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <p className="uppercase tracking-[3px] sm:tracking-[5px] text-amber-500 text-xs sm:text-sm font-semibold">

@@ -8,13 +8,12 @@ const ContactHero = () => {
   useReveal(".contact-hero");
 
   return (
-    <section className="contact-hero relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden bg-[#0F0E0D] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
+    <section className="contact-hero relative min-h-[100svh] flex items-center overflow-hidden bg-[#431602] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
       <LazyVideo
         src={heroVideo}
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/55 to-black/60" /> */}
       <div className="absolute left-8 sm:left-20 top-24 sm:top-32 h-48 sm:h-72 w-48 sm:w-72 rounded-full bg-amber-500/15 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 page-container">
@@ -23,7 +22,7 @@ const ContactHero = () => {
           Get In Touch
         </span>
 
-        <h1 className="mt-3 sm:mt-4 max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-white tracking-tight">
+        <h1 className="mt-3 sm:mt-4 max-w-4xl text-[clamp(2rem,8vw,4.5rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-white tracking-tight">
           We&apos;d Love To Hear
           <br />
           <span className="text-amber-400">From You</span>
@@ -44,7 +43,7 @@ const ContactHero = () => {
           </a>
           <Link
             to="/shop"
-            className="inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full border border-zinc-700 bg-black/40 backdrop-blur-md px-6 sm:px-8 py-3 sm:py-4 text-white font-semibold transition duration-300 hover:border-amber-500 hover:text-amber-400 text-sm sm:text-base"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full border border-zinc-700 bg-[#431602]/40 backdrop-blur-md px-6 sm:px-8 py-3 sm:py-4 text-white font-semibold transition duration-300 hover:border-amber-500 hover:text-amber-400 text-sm sm:text-base"
           >
             Explore Beans
             <FaArrowRight />

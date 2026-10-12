@@ -40,7 +40,7 @@ const ShopHorizontalShowcase = ({ products = [] }) => {
   if (!total) return null;
 
   return (
-    <section className="shop-3d-showcase py-20 bg-[#431602] relative overflow-hidden border-t border-b border-zinc-800/80 my-8">
+    <section className="shop-3d-showcase py-20 bg-[#431602] relative overflow-hidden my-8">
       {/* Background Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
 

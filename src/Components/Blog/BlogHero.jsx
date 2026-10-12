@@ -8,13 +8,11 @@ const BlogHero = () => {
   useReveal(".blog-hero");
 
   return (
-    <section className="blog-hero relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden bg-[#0F0E0D] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
+    <section className="blog-hero relative min-h-[100svh] flex items-center overflow-hidden bg-[#431602] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
       <LazyVideo
         src={HeroVideo}
         className="absolute inset-0 w-full h-full object-cover"
       />
-
-      {/* <div className="absolute inset-0 bg-black/55" /> */}
 
       <div className="relative z-10 page-container">
         <span className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-amber-500 text-black font-bold text-xs sm:text-sm mb-4 sm:mb-6 shadow-lg shadow-amber-500/20">
@@ -42,7 +40,7 @@ const BlogHero = () => {
           </Link>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 bg-black/40 backdrop-blur-md text-white font-semibold hover:border-amber-500 hover:text-amber-400 transition-all text-sm sm:text-base"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 bg-[#431602]/40 backdrop-blur-md text-white font-semibold hover:border-amber-500 hover:text-amber-400 transition-all text-sm sm:text-base"
           >
             Contact Us
             <FaArrowRight />

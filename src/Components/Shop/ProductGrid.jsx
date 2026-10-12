@@ -112,7 +112,7 @@ const ProductGrid = ({
 
   return (
     <section className="shop-grid-section py-10 sm:py-12 md:py-16 lg:py-24 bg-[#431602] relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[150px] sm:h-[200px] md:h-[300px] bg-amber-500/5 blur-[80px] sm:blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[150px] sm:h-[200px] md:h-[300px] bg-[#431602] blur-[80px] sm:blur-[100px] rounded-full pointer-events-none" />
 
       <div className="page-container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -130,11 +130,11 @@ const ProductGrid = ({
         </div>
 
         {/* Toolbar: Search + Filters */}
-        <div className="bg-[#181715] border border-zinc-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-y-3 sm:space-y-4">
+        <div className="bg-[#431602] border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 mb-6 sm:mb-8 md:mb-10 lg:mb-12 space-y-3 sm:space-y-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04)]">
           {/* Search */}
           <div className="relative w-full max-w-xl mx-auto">
             <FaSearch
-              className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none"
+              className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-[#d6b8a7] pointer-events-none"
               size={14}
             />
             <input
@@ -142,12 +142,12 @@ const ProductGrid = ({
               placeholder="Search coffee..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#22201E] border border-zinc-700 rounded-lg sm:rounded-xl py-2.5 sm:py-3 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-base text-white placeholder:text-zinc-500 outline-none focus:border-amber-500 transition"
+              className="w-full bg-[#2c1208]/80 border border-white/10 rounded-lg sm:rounded-xl py-2.5 sm:py-3 pl-9 sm:pl-11 pr-9 sm:pr-11 text-sm sm:text-base text-white placeholder:text-[#d6b8a7] outline-none focus:border-amber-500 transition"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm("")}
-                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition p-1"
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-[#d6b8a7] hover:text-white transition p-1"
                 aria-label="Clear search"
               >
                 <FaTimes size={14} />
@@ -164,7 +164,7 @@ const ProductGrid = ({
                 className={`shrink-0 whitespace-nowrap px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-sm font-medium border transition-all duration-300 ${
                   selectedCategory === category
                     ? "bg-amber-500 text-black border-amber-500 shadow-lg shadow-amber-500/20"
-                    : "bg-[#22201E] text-zinc-300 border-zinc-700 hover:border-amber-500/50 hover:text-amber-400"
+                    : "bg-[#2c1208]/80 text-[#f5efe6] border border-white/10 hover:border-amber-500/50 hover:text-amber-400"
                 }`}
               >
                 {category}

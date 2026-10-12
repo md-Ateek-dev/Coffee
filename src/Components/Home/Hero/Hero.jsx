@@ -16,18 +16,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] sm:min-h-screen overflow-hidden flex items-center justify-center pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-14 bg-[#0A0908]">
+    <section className="relative min-h-[100svh] overflow-hidden flex items-center justify-center pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-14 bg-[#431602]">
       {/* Fullscreen Ambient Video Background */}
       <LazyVideo
         src={heroVideoWebm}
         webmSrc={heroVideoWebm}
         priority
-        className="absolute inset-0 w-full h-full object-cover bg-center bg-cover scale-100 sm:scale-105 opacity-40 mix-blend-luminosity"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
-
-      {/* Dark Ambient Gradient Overlays for luxury depth */}
-      {/* <div className="absolute inset-0 bg-gradient-to-b from-[#0A0908]/90 via-[#0A0908]/60 to-[#0A0908]" /> */}
-      {/* <div className="absolute inset-0 bg-radial from-transparent via-[#0A0908]/40 to-[#0A0908]" /> */}
 
       {/* Decorative Golden Glows */}
       <div className="absolute top-10 sm:top-24 left-2 sm:left-10 w-48 sm:w-96 h-48 sm:h-96 rounded-full bg-amber-500/12 blur-[100px] sm:blur-[160px] pointer-events-none" />

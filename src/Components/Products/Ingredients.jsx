@@ -27,7 +27,7 @@ const Ingredients = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#181715] overflow-hidden">
+    <section className="py-24 bg-[#431602] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}

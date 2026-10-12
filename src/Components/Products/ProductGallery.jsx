@@ -5,9 +5,7 @@ import products from "../../Data/Products";
 const ProductGallery = () => {
   const { id } = useParams();
 
-  const product = products.find(
-    (item) => item.id === Number(id)
-  );
+  const product = products.find((item) => item.id === Number(id));
 
   const images = product?.images || (product?.image ? [product.image] : []);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -17,7 +15,7 @@ const ProductGallery = () => {
   const currentImage = images[selectedIndex];
 
   return (
-    <section className="py-24 bg-[#181715]">
+    <section className="py-24 bg-[#431602]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Thumbnails */}

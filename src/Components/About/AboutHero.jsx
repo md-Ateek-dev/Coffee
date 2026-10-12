@@ -8,22 +8,21 @@ const AboutHero = () => {
   useReveal(".about-hero");
 
   return (
-    <section className="about-hero relative min-h-[85vh] sm:min-h-screen overflow-hidden flex items-center bg-[#0F0E0D] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
+    <section className="about-hero relative min-h-[100svh] overflow-hidden flex items-center bg-[#431602] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20">
       <LazyVideo
         src={HeroVideo}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* <div className="absolute inset-0 bg-black/55" /> */}
       <div className="absolute top-16 sm:top-24 left-8 sm:left-24 w-48 sm:w-80 h-48 sm:h-80 rounded-full bg-amber-500/20 blur-[130px] pointer-events-none" />
 
       <div className="relative z-10 page-container">
         <div className="max-w-3xl">
-          <span className="uppercase tracking-[3px] sm:tracking-[6px] text-amber-500 font-bold text-xs sm:text-sm">
+          <span className="uppercase tracking-[2px] sm:tracking-[4px] lg:tracking-[6px] text-amber-500 font-bold text-[10px] sm:text-sm">
             Crafting Quality Since 2018
           </span>
 
-          <h1 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-white tracking-tight">
+          <h1 className="mt-3 sm:mt-4 text-[clamp(2rem,8vw,4.5rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight text-white tracking-tight">
             Brewing Stories,
             <br />
             One Cup At A Time
@@ -45,7 +44,7 @@ const AboutHero = () => {
             </Link>
             <Link
               to="/contact"
-              className="text-center px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 text-white font-semibold hover:border-amber-500 hover:text-amber-400 transition-all bg-black/30 backdrop-blur-md text-sm sm:text-base"
+              className="text-center px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-zinc-700 text-white font-semibold hover:border-amber-500 hover:text-amber-400 transition-all bg-[#431602]/40 backdrop-blur-md text-sm sm:text-base"
             >
               Contact Us
             </Link>

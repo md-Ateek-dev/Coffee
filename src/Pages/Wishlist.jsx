@@ -12,7 +12,7 @@ const Wishlist = () => {
     <PageTransition>
       <Navbar />
 
-      <section className="pt-24 sm:pt-28 pb-12 sm:pb-16 bg-[#0F0E0D] min-h-[70vh]">
+      <section className="pt-24 sm:pt-28 pb-12 sm:pb-16 bg-[#431602] min-h-[70vh]">
         <div className="page-container">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 sm:mb-10">
             <div>
@@ -65,7 +65,10 @@ const Wishlist = () => {
                   key={item.id}
                   className="flex flex-col rounded-xl sm:rounded-2xl bg-[#181715] border border-zinc-800 overflow-hidden hover:border-amber-500/50 transition group"
                 >
-                  <Link to={`/product/${item.id}`} className="relative aspect-[5/4] overflow-hidden">
+                  <Link
+                    to={`/product/${item.id}`}
+                    className="relative aspect-[5/4] overflow-hidden"
+                  >
                     <img
                       src={item.image}
                       alt={item.title || item.name}

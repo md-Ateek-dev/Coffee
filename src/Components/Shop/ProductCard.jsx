@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="group rounded-3xl bg-[#431602] overflow-hidden border border-white/10 hover:border-amber-500 transition duration-300">
+    <div className="group rounded-3xl bg-[#431602] overflow-hidden border border-white hover:border-amber-500 transition duration-300">
       <div className="overflow-hidden">
         <img
           src={product.image}

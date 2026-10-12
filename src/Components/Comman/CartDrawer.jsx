@@ -17,23 +17,28 @@ const CartDrawer = () => {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
+        className="fixed inset-0 bg-[#431602] backdrop-blur-sm z-[60]"
         onClick={() => setCartOpen(false)}
       />
 
-      <aside className="fixed top-0 right-0 h-full w-full sm:max-w-md bg-[#181715] border-l border-zinc-800 z-[70] flex flex-col shadow-2xl">
-        <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-zinc-800">
-          <h2 className="text-lg sm:text-xl font-bold">
-            Your Cart
-            {cart.length > 0 && (
-              <span className="ml-2 text-xs sm:text-sm font-normal text-zinc-400">
-                ({cart.length} {cart.length === 1 ? "item" : "items"})
-              </span>
-            )}
-          </h2>
+      <aside className="fixed top-0 right-0 h-full w-full sm:max-w-md bg-[#431602] border-l border-white/10 z-[70] flex flex-col shadow-2xl text-[#f5efe6]">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-white/10">
+          <div>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-amber-400 font-semibold mb-1">
+              A little coffee joy
+            </p>
+            <h2 className="text-lg sm:text-xl font-bold">
+              Your Cart
+              {cart.length > 0 && (
+                <span className="ml-2 text-xs sm:text-sm font-normal text-[#d6b8a7]">
+                  ({cart.length} {cart.length === 1 ? "item" : "items"})
+                </span>
+              )}
+            </h2>
+          </div>
           <button
             onClick={() => setCartOpen(false)}
-            className="p-2 rounded-full hover:bg-zinc-800 transition text-zinc-400 hover:text-white"
+            className="p-2 rounded-full hover:bg-white/10 transition text-[#d6b8a7] hover:text-white"
             aria-label="Close cart"
           >
             <FiX size={22} />
@@ -43,11 +48,13 @@ const CartDrawer = () => {
         <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4">
           {cart.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-12 sm:py-16">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-zinc-800 flex items-center justify-center mb-5 sm:mb-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-500/10 border border-amber-400/20 flex items-center justify-center mb-5 sm:mb-6">
                 <span className="text-2xl sm:text-3xl">☕</span>
               </div>
-              <p className="text-zinc-400 text-base sm:text-lg">Your cart is empty</p>
-              <p className="text-zinc-500 text-xs sm:text-sm mt-2 px-4">
+              <p className="text-[#f5efe6] font-semibold text-base sm:text-lg">
+                Your cart is empty
+              </p>
+              <p className="text-[#d6b8a7] text-xs sm:text-sm mt-2 px-4">
                 Add some delicious coffee to get started
               </p>
               <Link
@@ -63,7 +70,7 @@ const CartDrawer = () => {
               {cart.map((item) => (
                 <li
                   key={item.id}
-                  className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#22201E] border border-zinc-800"
+                  className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#2c1208] border border-white/10 hover:border-amber-500/40 transition-colors"
                 >
                   <img
                     src={item.image}
@@ -75,11 +82,11 @@ const CartDrawer = () => {
                     <Link
                       to={`/product/${item.id}`}
                       onClick={() => setCartOpen(false)}
-                      className="font-semibold text-sm sm:text-base hover:text-amber-500 transition truncate block"
+                      className="font-semibold text-sm sm:text-base hover:text-amber-400 transition truncate block"
                     >
                       {item.title}
                     </Link>
-                    <p className="text-amber-500 font-bold mt-1 text-sm sm:text-base">
+                    <p className="text-amber-400 font-bold mt-1 text-sm sm:text-base">
                       {item.price}
                     </p>
 
@@ -89,7 +96,7 @@ const CartDrawer = () => {
                           onClick={() =>
                             updateCartQuantity(item.id, item.quantity - 1)
                           }
-                          className="w-7 h-7 rounded-full bg-zinc-800 hover:bg-amber-500 hover:text-black flex items-center justify-center transition"
+                          className="w-7 h-7 rounded-full bg-white/10 hover:bg-amber-500 hover:text-black flex items-center justify-center transition"
                           aria-label="Decrease quantity"
                         >
                           <FiMinus size={14} />
@@ -101,7 +108,7 @@ const CartDrawer = () => {
                           onClick={() =>
                             updateCartQuantity(item.id, item.quantity + 1)
                           }
-                          className="w-7 h-7 rounded-full bg-zinc-800 hover:bg-amber-500 hover:text-black flex items-center justify-center transition"
+                          className="w-7 h-7 rounded-full bg-white/10 hover:bg-amber-500 hover:text-black flex items-center justify-center transition"
                           aria-label="Increase quantity"
                         >
                           <FiPlus size={14} />
@@ -110,7 +117,7 @@ const CartDrawer = () => {
 
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="text-zinc-500 hover:text-red-400 transition p-1"
+                        className="text-[#c4a898] hover:text-red-300 transition p-1"
                         aria-label="Remove item"
                       >
                         <FiTrash2 size={16} />
@@ -124,14 +131,16 @@ const CartDrawer = () => {
         </div>
 
         {cart.length > 0 && (
-          <div className="px-4 sm:px-6 py-4 sm:py-5 border-t border-zinc-800 space-y-3 sm:space-y-4 safe-area-bottom">
+          <div className="px-4 sm:px-6 py-4 sm:py-5 border-t border-white/10 bg-[#351204] space-y-3 sm:space-y-4 safe-area-bottom">
             <div className="flex items-center justify-between">
-              <span className="text-zinc-400 text-sm sm:text-base">Subtotal</span>
-              <span className="text-xl sm:text-2xl font-bold text-amber-500">
+              <span className="text-[#d6b8a7] text-sm sm:text-base">
+                Subtotal
+              </span>
+              <span className="text-xl sm:text-2xl font-bold text-amber-400">
                 ${cartTotal.toFixed(2)}
               </span>
             </div>
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-[#c4a898]">
               Shipping calculated at checkout
             </p>
             <button className="w-full py-3.5 sm:py-4 bg-amber-500 text-black font-bold rounded-full hover:bg-amber-400 transition text-sm sm:text-base">
@@ -140,7 +149,7 @@ const CartDrawer = () => {
             <Link
               to="/shop"
               onClick={() => setCartOpen(false)}
-              className="block text-center text-xs sm:text-sm text-zinc-400 hover:text-amber-500 transition"
+              className="block text-center text-xs sm:text-sm text-[#d6b8a7] hover:text-amber-400 transition"
             >
               Continue Shopping
             </Link>

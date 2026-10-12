@@ -22,7 +22,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
             className="
               w-full
               bg-[#431602]
-              border border-zinc-700
+              border border-white
               rounded-full
               py-4
               pl-14

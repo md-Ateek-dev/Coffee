@@ -86,8 +86,8 @@ const SocialLinks = () => {
 
       {/* Ambient background: gives the glass something to blur */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="social-orb-a absolute -right-20 top-0 h-96 w-96 rounded-full bg-amber-500/20 blur-[120px]" />
-        <div className="social-orb-b absolute -left-24 bottom-0 h-[26rem] w-[26rem] rounded-full bg-orange-700/20 blur-[140px]" />
+        <div className="social-orb-a absolute -right-20 top-0 h-96 w-96 rounded-full bg-[#431602] blur-[120px]" />
+        <div className="social-orb-b absolute -left-24 bottom-0 h-[26rem] w-[26rem] rounded-full bg-[#431602] blur-[140px]" />
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{

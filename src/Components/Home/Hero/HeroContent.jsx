@@ -19,7 +19,7 @@ const HeroContent = () => {
       </motion.div>
 
       {/* Responsive Fluid Heading */}
-      <h1 className="hero-title text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-[1.12] tracking-tight">
+      <h1 className="hero-title text-[clamp(2rem,8vw,4rem)] sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-[1.12] tracking-tight">
         Brewed <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">
           For Every
@@ -47,7 +47,7 @@ const HeroContent = () => {
 
         <Link to="/menu">
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <MagneticButton className="hero-btn px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-zinc-700/80 text-white font-semibold hover:border-amber-400 hover:text-amber-300 transition-all bg-black/40 backdrop-blur-md text-xs sm:text-sm">
+            <MagneticButton className="hero-btn px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-zinc-700/80 text-white font-semibold hover:border-amber-400 hover:text-amber-300 transition-all bg-[#431602]/40 backdrop-blur-md text-xs sm:text-sm">
               Explore Menu
             </MagneticButton>
           </motion.div>

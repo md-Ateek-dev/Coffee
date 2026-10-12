@@ -52,7 +52,7 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <section className="min-h-[60vh] pt-32 flex items-center justify-center bg-[#0F0E0D]">
+      <section className="min-h-[60vh] pt-32 flex items-center justify-center bg-[#431602]">
         <div className="text-center reveal-item opacity-0 translate-y-8 transition-all duration-700">
           <div className="text-6xl mb-4">☕</div>
           <h2 className="text-3xl font-bold text-white">Product Not Found</h2>
@@ -97,7 +97,7 @@ const ProductDetail = () => {
   return (
     <section
       ref={sectionRef}
-      className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 bg-[#0F0E0D] relative overflow-hidden min-h-screen"
+      className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 bg-[#431602] relative overflow-hidden min-h-[100svh]"
     >
       {/* Ambient Background Glows */}
       <div className="absolute top-20 right-0 w-72 sm:w-[500px] h-72 sm:h-[500px] rounded-full bg-amber-500/8 blur-[150px] pointer-events-none animate-pulse" />
@@ -180,9 +180,6 @@ const ProductDetail = () => {
                         : "opacity-100 scale-100"
                     } group-hover:scale-110`}
                   />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Navigation Arrows */}
                   {images.length > 1 && (

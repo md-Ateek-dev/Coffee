@@ -117,9 +117,9 @@ const StoreInfo = () => {
           AMBIENT BACKGROUND
       ========================== */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="store-orb-a absolute -left-24 top-10 h-96 w-96 rounded-full bg-amber-500/20 blur-[120px]" />
+        <div className="store-orb-a absolute -left-24 top-10 h-96 w-96 rounded-full bg-[#431602] blur-[120px]" />
 
-        <div className="store-orb-b absolute -right-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-orange-700/20 blur-[140px]" />
+        <div className="store-orb-b absolute -right-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-[#431602] blur-[140px]" />
 
         <div
           className="absolute inset-0 opacity-[0.035]"
@@ -202,12 +202,11 @@ const StoreInfo = () => {
 
                     group-hover:border-white
 
-                    group-hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]
+                    group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
 
-                    group-hover:bg-white/[0.04]
 
                     group-focus-visible:ring-2
-                    group-focus-visible:ring-white/60
+                    group-focus-visible:ring-white/90
 
                     motion-reduce:transition-none
                     motion-reduce:group-hover:translate-y-0
@@ -216,7 +215,7 @@ const StoreInfo = () => {
                   {/* =========================
                       WHITE CURSOR LIGHT
                   ========================== */}
-                  <div
+                  {/* <div
                     aria-hidden="true"
                     className="
                       pointer-events-none
@@ -231,7 +230,7 @@ const StoreInfo = () => {
                       background:
                         "radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.14), transparent 60%)",
                     }}
-                  />
+                  /> */}
 
                   {/* =========================
                       GLASS EDGE HIGHLIGHT
